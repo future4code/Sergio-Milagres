@@ -1,0 +1,10 @@
+1 - Comida Japonesa
+2 - Pizza
+3 - Hamburguer
+4 - Parmegiana
+5 - Strogonoff
+6 - Feijoada
+7 - Churrasco
+8 - Canelone
+9 - Lasanha
+10 - Taco
