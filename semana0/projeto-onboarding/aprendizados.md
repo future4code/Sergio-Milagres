@@ -1,0 +1,3 @@
+# Aprendizados da semana
+
+Esta semana de onboarding da Labenu foi bem tranquila. De um modo geral, na segunda-feira eu tive uma aula inalgural e outra para aprender a utilizar as plataformas Slack e Zoom, na terça-feira aprendi a como, quando e onde tirar dúvidas, na quarta-feira aprendi a utilizar o Terminal, na quinta-feira aprendi alguns comandos Git e como utilizar o GitHub e hoje, sexta-feira, aprendi a usar o **VSCode**. Seguindo o cronograma da semana onboarding, tive palestras sobre as Regras de Convivência e Diversidade, a Rotina da Labenu e a Pedagogia da Labenu; Dinâmicas bem divertidas na segunda-feira; realizei Warm-ups, Feedbacks e Stand-ups e pratiquei com os exercícios propostos.
