@@ -1,0 +1,78 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+a:link, a:visited {
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+a:hover, a:active {
+    background-color: rgb(245, 134, 52);
+}
+
+header {
+    background-color: black;
+    color: white;
+    padding: 8px 16px 0px 16px;
+    text-align: center;
+}
+
+.conteudo {
+    padding: 8px 16px;
+    height: 200px;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    padding: 16px;
+    text-align: center;
+}
+
+.titulo-pagina {
+    text-align: left;
+}
+
+.links {
+    text-align: left;
+}
+
+table {
+    text-align: center;
+    border-collapse: collapse;
+    width: 70%;
+}
+
+th {
+    text-align: center;
+    border: 1px solid black;
+    padding: 16px;
+    background-color: rgb(245, 134, 52);
+}
+
+td {
+text-align: center;
+border: 1px solid black;
+padding: 16px;
+}
+
+button {
+    background-color: rgb(245, 134, 52);
+    color: white;
+}
+
+button:hover, button:active {
+    background-color: black;
+}
+
+h2 {
+    padding: 8px 16px;
