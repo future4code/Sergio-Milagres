@@ -34,7 +34,7 @@ img {
 }
 
 div>p:first-child {
-    max-width: 184px;
+    max-width: 200px;
     margin: auto;
 }
 
@@ -47,6 +47,7 @@ div>p:first-child {
     border-radius: 5px;
     font-size: 20px;
     color: white;
+    margin: 16px;
 }
 
 .botao-amarelo:hover {
@@ -139,6 +140,7 @@ td button:active {
     border-radius: 5px;
     font-size: 10px;
     color: black;
+    margin: auto;
 }
 
 #back-button:hover {
