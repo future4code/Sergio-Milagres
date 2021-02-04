@@ -30,7 +30,8 @@ img {
 }
 
 div>p:first-child {
-    display: inline;
+    max-width: 184px;
+    margin: auto;
 }
 
 div img {
