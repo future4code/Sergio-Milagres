@@ -17,7 +17,7 @@ body {
 
 .green-background {
     background-color: green;
-    flex-grow: 1;
+    width: 25%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,7 +26,7 @@ body {
 
 .yellow-background {
     background-color: gold;
-    flex-grow: 4;
+    width: 75%;
     display: flex;
     justify-content: center;
     align-items: center;
