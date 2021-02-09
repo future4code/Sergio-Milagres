@@ -8,63 +8,48 @@ body {
 }
 
 #main-container {
+    height: 100%;
     display: grid;
-    grid-template-rows: 40px 390px 75px 75px 40px;
+    grid-template-rows: 40px 4fr 1fr 1fr 40px;
     grid-template-columns: repeat(4, 1fr);
 }
 
-
-.green-background {
-    background-color: green;
+div div {
     display: grid;
     justify-content: center;
     align-items: center;
+}
+
+.green-background {
+    background-color: green;
 }
 
 .yellow-background {
     background-color: gold;
-    display: grid;
-    justify-content: center;
-    align-items: center;
     grid-column: 2/5;
 }
 
 .pink-background {
     background-color: fuchsia;
-    display: grid;
-    justify-content: center;
-    align-items: center;
     grid-column: 1/5;
 }
 
 .blue-background {
     background-color: blue;
-    display: grid;
-    justify-content: center;
-    align-items: center;
     grid-area: 3/1/5/3;
 }
 
 .red-background {
     background-color: red;
-    display: grid;
-    justify-content: center;
-    align-items: center;
     grid-area: 3/4/4/5;
 }
 
 .lightgreen-background {
     background-color: lightgreen;
-    display: grid;
-    justify-content: center;
-    align-items: center;
     grid-area: 4/4/5/5;
 }
 
 .purple-background {
     background-color: purple;
-    display: grid;
-    justify-content: center;
-    align-items: center;
     grid-area: 5/1/6/5;
 }
