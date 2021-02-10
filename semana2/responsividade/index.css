@@ -1,0 +1,116 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+div {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(3, 1fr);
+    gap: 16px;
+    padding: 8px;
+}
+
+header {
+    height: 11vh;
+    background-color: red;
+}
+
+.blue-block {
+    height: 12vh;
+    background-color: blue;
+}
+
+.yellow-block {
+    height: 12vh;
+    background-color: yellow;
+}
+
+.green-block {
+    height: 12vh;
+    background-color: green;
+}
+
+.black {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    padding: 8px;
+}
+
+.black-block {
+    height: 41vh;
+    background-color: black;
+    color: white;
+}
+
+.white {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 8px;
+}
+
+.white-block {
+    height: 12vh;
+    background-color: white;
+}
+
+@media screen and (min-device-width:421px) and (max-device-width: 800px) {
+    main {
+        display: grid;
+        grid-template: repeat(4, 1fr) / repeat(2, 1fr);
+        gap: 16px;
+        padding: 8px;
+    }
+
+    .green-block {
+        grid-column: 1/3;
+        background-color: green;
+    }
+
+    .white {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        padding: 8px;
+    }
+
+    .white-block:last-of-type {
+        grid-column: 1/3;
+        background-color: white;
+    }
+}
+
+@media screen and (max-device-width:420px) {
+    main {
+        display: grid;
+        grid-template: repeat(6, 1fr) / 1fr;
+        gap: 16px;
+        padding: 8px;
+    }
+
+    .black {
+        display: grid;
+        grid-template: repeat(2, 1fr) / 1fr;
+        gap: 16px;
+        padding: 8px;
+    }
+
+    .white {
+        display: grid;
+        grid-template: repeat(3, 1fr) / 1fr;
+        gap: 16px;
+        padding: 8px;
+    }
+
+}
+
