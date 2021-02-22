@@ -1,0 +1,58 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 70px 1fr 40px;
+    row-gap: 16px;
+}
+
+header {
+    background-color: #eeeeee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+}
+
+header a {
+    color: black;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+div h2 {
+    padding-bottom: 16px;;
+}
+
+footer {
+    background-color: #eeeeee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    height: 50px;
+    width: 50px;
+}
+
+video {
+    height: 65vh;
+}
+
+input {
+    height: 24px;
+}
