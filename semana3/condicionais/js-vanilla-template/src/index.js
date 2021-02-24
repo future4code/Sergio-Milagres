@@ -175,3 +175,322 @@ if (quantIngresso < 1) {
   console.log("Quantidade de Ingressos:", quantIngresso);
 }
 
+console.log("---Valores---");
+let valorDoIngresso;
+switch (tipoDeJogo) {
+  case "DO":
+    switch (etapaDoJogo) {
+      case "SF":
+        switch (categoria) {
+          case 1:
+            valorDoIngresso = 1320;
+            console.log("Valor do ingresso: R$", valorDoIngresso);
+            break;
+          case 2:
+            valorDoIngresso = 880;
+            console.log("Valor do ingresso: R$", valorDoIngresso);
+            break;
+          case 3:
+            valorDoIngresso = 550;
+            console.log("Valor do ingresso: R$", valorDoIngresso);
+            break;
+          case 4:
+            valorDoIngresso = 220;
+            console.log("Valor do ingresso: R$", valorDoIngresso);
+            break;
+          default:
+            console.log("Valor não encontrado, devido à categoria incorreta");
+            break;
+        }
+        break;
+      case "DT":
+        switch (categoria) {
+          case 1:
+            valorDoIngresso = 660;
+            console.log("Valor do ingresso: R$", valorDoIngresso);
+            break;
+          case 2:
+            valorDoIngresso = 440;
+            console.log("Valor do ingresso: R$", valorDoIngresso);
+            break;
+          case 3:
+            valorDoIngresso = 330;
+            console.log("Valor do ingresso: R$", valorDoIngresso);
+            break;
+          case 4:
+            valorDoIngresso = 170;
+            console.log("Valor do ingresso: R$", valorDoIngresso);
+            break;
+          default:
+            console.log("Valor não encontrado, devido à categoria incorreta");
+            break;
+        }
+        break;
+      case "FI":
+        switch (categoria) {
+          case 1:
+            valorDoIngresso = 1980;
+            console.log("Valor do ingresso: R$", valorDoIngresso);
+            break;
+          case 2:
+            valorDoIngresso = 1320;
+            console.log("Valor do ingresso: R$", valorDoIngresso);
+            break;
+          case 3:
+            valorDoIngresso = 880;
+            console.log("Valor do ingresso: R$", valorDoIngresso);
+            break;
+          case 4:
+            valorDoIngresso = 330;
+            console.log("Valor do ingresso: R$", valorDoIngresso);
+            break;
+          default:
+            console.log("Valor não encontrado, devido à categoria incorreta");
+            break;
+        }
+        break;
+      default:
+        console.log("Valor não encontrado, devido à etapa do jogo incorreta");
+        break;
+    }
+    break;
+  case "IN":
+    switch (etapaDoJogo) {
+      case "SF":
+        switch (categoria) {
+          case 1:
+            valorDoIngresso = 1320 / 4.1;
+            console.log("Valor do ingresso: U$", valorDoIngresso);
+            break;
+          case 2:
+            valorDoIngresso = 880 / 4.1;
+            console.log("Valor do ingresso: U$", valorDoIngresso);
+            break;
+          case 3:
+            valorDoIngresso = 550 / 4.1;
+            console.log("Valor do ingresso: U$", valorDoIngresso);
+            break;
+          case 4:
+            valorDoIngresso = 220 / 4.1;
+            console.log("Valor do ingresso: U$", valorDoIngresso);
+            break;
+          default:
+            console.log("Valor não encontrado, devido à categoria incorreta");
+            break;
+        }
+        break;
+      case "DT":
+        switch (categoria) {
+          case 1:
+            valorDoIngresso = 660 / 4.1;
+            console.log("Valor do ingresso: U$", valorDoIngresso);
+            break;
+          case 2:
+            valorDoIngresso = 440 / 4.1;
+            console.log("Valor do ingresso: U$", valorDoIngresso);
+            break;
+          case 3:
+            valorDoIngresso = 330 / 4.1;
+            console.log("Valor do ingresso: U$", valorDoIngresso);
+            break;
+          case 4:
+            valorDoIngresso = 170 / 4.1;
+            console.log("Valor do ingresso: U$", valorDoIngresso);
+            break;
+          default:
+            console.log("Valor não encontrado, devido à categoria incorreta");
+            break;
+        }
+        break;
+      case "FI":
+        switch (categoria) {
+          case 1:
+            valorDoIngresso = 1980 / 4.1;
+            console.log("Valor do ingresso: U$", valorDoIngresso);
+            break;
+          case 2:
+            valorDoIngresso = 1320 / 4.1;
+            console.log("Valor do ingresso: U$", valorDoIngresso);
+            break;
+          case 3:
+            valorDoIngresso = 880 / 4.1;
+            console.log("Valor do ingresso: U$", valorDoIngresso);
+            break;
+          case 4:
+            valorDoIngresso = 330 / 4.1;
+            console.log("Valor do ingresso: U$", valorDoIngresso);
+            break;
+          default:
+            console.log("Valor não encontrado, devido à categoria incorreta");
+            break;
+        }
+        break;
+      default:
+        console.log("Valor não encontrado, devido à etapa do jogo incorreta");
+        break;
+    }
+    break;
+  default:
+    console.log("Valor não encontrado, devido ao tipo de jogo incorreto");
+    break;
+}
+
+let valorTotal = quantIngresso * valorDoIngresso;
+switch (valorTotal) {
+  case 0:
+    console.log(
+      "Valor não calculado, devido à quantidade de ingressos incorreta"
+    );
+    break;
+  default:
+    switch (tipoDeJogo) {
+      case "DO":
+        switch (etapaDoJogo) {
+          case "SF":
+            switch (categoria) {
+              case 1:
+                console.log("Valor total: R$", valorTotal);
+                break;
+              case 2:
+                console.log("Valor total: R$", valorTotal);
+                break;
+              case 3:
+                console.log("Valor total: R$", valorTotal);
+                break;
+              case 4:
+                console.log("Valor total: R$", valorTotal);
+                break;
+              default:
+                console.log(
+                  "Valor não calculado, devido à categoria incorreta"
+                );
+                break;
+            }
+            break;
+          case "DT":
+            switch (categoria) {
+              case 1:
+                console.log("Valor total: R$", valorTotal);
+                break;
+              case 2:
+                console.log("Valor total: R$", valorTotal);
+                break;
+              case 3:
+                console.log("Valor total: R$", valorTotal);
+                break;
+              case 4:
+                console.log("Valor total: R$", valorTotal);
+                break;
+              default:
+                console.log(
+                  "Valor não calculado, devido à categoria incorreta"
+                );
+                break;
+            }
+            break;
+          case "FI":
+            switch (categoria) {
+              case 1:
+                console.log("Valor total: R$", valorTotal);
+                break;
+              case 2:
+                console.log("Valor total: R$", valorTotal);
+                break;
+              case 3:
+                console.log("Valor total: R$", valorTotal);
+                break;
+              case 4:
+                console.log("Valor total: R$", valorTotal);
+                break;
+              default:
+                console.log(
+                  "Valor não calculado, devido à categoria incorreta"
+                );
+                break;
+            }
+            break;
+          default:
+            console.log(
+              "Valor não calculado, devido à etapa do jogo incorreta"
+            );
+            break;
+        }
+        break;
+      case "IN":
+        switch (etapaDoJogo) {
+          case "SF":
+            switch (categoria) {
+              case 1:
+                console.log("Valor total: U$", valorTotal);
+                break;
+              case 2:
+                console.log("Valor total: U$", valorTotal);
+                break;
+              case 3:
+                console.log("Valor total: U$", valorTotal);
+                break;
+              case 4:
+                console.log("Valor total: U$", valorTotal);
+                break;
+              default:
+                console.log(
+                  "Valor não calculado, devido à categoria incorreta"
+                );
+                break;
+            }
+            break;
+          case "DT":
+            switch (categoria) {
+              case 1:
+                console.log("Valor total: U$", valorTotal);
+                break;
+              case 2:
+                console.log("Valor total: U$", valorTotal);
+                break;
+              case 3:
+                console.log("Valor total: U$", valorTotal);
+                break;
+              case 4:
+                console.log("Valor total: U$", valorTotal);
+                break;
+              default:
+                console.log(
+                  "Valor não calculado, devido à categoria incorreta"
+                );
+                break;
+            }
+            break;
+          case "FI":
+            switch (categoria) {
+              case 1:
+                console.log("Valor total: U$", valorTotal);
+                break;
+              case 2:
+                console.log("Valor total: U$", valorTotal);
+                break;
+              case 3:
+                console.log("Valor total: U$", valorTotal);
+                break;
+              case 4:
+                console.log("Valor total: U$", valorTotal);
+                break;
+              default:
+                console.log(
+                  "Valor não calculado, devido à categoria incorreta"
+                );
+                break;
+            }
+            break;
+          default:
+            console.log(
+              "Valor não calculado, devido à etapa do jogo incorreta"
+            );
+            break;
+        }
+        break;
+      default:
+        console.log("Valor não calculado, devido ao tipo de jogo incorreto");
+        break;
+    }
+    break;
+}
