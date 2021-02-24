@@ -98,17 +98,80 @@ switch (turno) {
     break;
 } */
 
-// EXERCÍCIO 7
+// EXERCÍCIO 7 (COM DESAFIO 1)
 
 /* let genero = prompt("Qual gênero de filme que irão assitir?");
 let preco = Number(prompt("Qual o preço do ingresso?"));
+let snack = prompt("Que snack(s) irá comprar?");
 
 if (genero === "fantasia") {
   if (preco < 15) {
-    console.log("Bom filme!");
+    console.log("Bom filme!\n... com", snack);
   } else if (preco >= 15) {
     console.log("Escolha outro filme ☹");
   }
 } else {
   console.log("Escolha outro filme ☹");
 } */
+
+// DESAFIO 2
+
+const cliente = prompt("Informe seu nome completo");
+console.log("---Dados da compra---");
+console.log("Nome do cliente:", cliente);
+const tipoDeJogo = prompt(
+  "Informe o Tipo de jogo, conforme as opções abaixo:\nIN (Internacional)\nDO (Doméstico)"
+);
+switch (tipoDeJogo) {
+  case "DO":
+    console.log("Tipo do jogo: Nacional");
+    break;
+  case "IN":
+    console.log("Tipo do jogo: Internacional");
+    break;
+  default:
+    console.log("Tipo de jogo não encontrado");
+    break;
+}
+const etapaDoJogo = prompt(
+  "Informe a Etapa do jogo, conforme as opções abaixo:\nSF (Semi-final)\nDT (Decisão de terceiro lugar)\nFI (Final)"
+);
+switch (etapaDoJogo) {
+  case "SF":
+    console.log("Etapa do jogo: Semi-final");
+    break;
+  case "DT":
+    console.log("Etapa do jogo: Decisão de terceiro lugar");
+    break;
+  case "FI":
+    console.log("Etapa do jogo: Final");
+    break;
+  default:
+    console.log("Etapa do jogo não encontrada");
+    break;
+}
+const categoria = Number(prompt("Informe a Categoria:\n1, 2, 3 ou 4"));
+switch (categoria) {
+  case 1:
+    console.log("Categoria:", categoria);
+    break;
+  case 2:
+    console.log("Categoria:", categoria);
+    break;
+  case 3:
+    console.log("Categoria:", categoria);
+    break;
+  case 4:
+    console.log("Categoria:", categoria);
+    break;
+  default:
+    console.log("Categoria não encontrada");
+    break;
+}
+const quantIngresso = Number(prompt("Informe a quantidade de ingressos:"));
+if (quantIngresso < 1) {
+  console.log("Quantidade inválida!");
+} else {
+  console.log("Quantidade de Ingressos:", quantIngresso);
+}
+
