@@ -9,6 +9,14 @@ function inverteArray(array) {
 
 function retornaNumerosParesElevadosADois (array) {
    // implemente sua lógica aqui
+   let arrayDeSaida = []
+
+   for(let x of array) {
+      if (x % 2 === 0) {
+         arrayDeSaida.push(x * x)
+      }
+   }
+   return arrayDeSaida
 }
 
 //Exercício 3
