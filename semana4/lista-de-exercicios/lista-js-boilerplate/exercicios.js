@@ -94,7 +94,7 @@ function checaTriangulo(a, b, c) {
 
 function comparaDoisNumeros(num1, num2) {
   // implemente sua lógica aqui
-  
+
   const output = {
     maiorNumero: 0,
     maiorDivisivelporMenor: 0,
@@ -111,7 +111,7 @@ function comparaDoisNumeros(num1, num2) {
     output.diferenca = num2 - num1;
   }
 
-  return output
+  return output;
 }
 
 // Exercício 10
@@ -124,6 +124,7 @@ function segundoMaiorEMenor(array) {
 
 function ordenaArray(array) {
   // implemente sua lógica aqui
+  return array.sort((a, b) => a - b);
 }
 
 // Exercício 12
