@@ -94,6 +94,24 @@ function checaTriangulo(a, b, c) {
 
 function comparaDoisNumeros(num1, num2) {
   // implemente sua lógica aqui
+  
+  const output = {
+    maiorNumero: 0,
+    maiorDivisivelporMenor: 0,
+    diferenca: 0,
+  };
+
+  if (num1 > num2) {
+    output.maiorNumero = num1;
+    output.maiorDivisivelporMenor = num1 % num2 === 0;
+    output.diferenca = num1 - num2;
+  } else {
+    output.maiorNumero = num2;
+    output.maiorDivisivelporMenor = num2 % num1 === 0;
+    output.diferenca = num2 - num1;
+  }
+
+  return output
 }
 
 // Exercício 10
