@@ -77,6 +77,17 @@ function retornaNNumerosPares(n) {
 
 function checaTriangulo(a, b, c) {
   // implemente sua lógica aqui
+  let equilatero = "Equilátero";
+  let escaleno = "Escaleno";
+  let isoceles = "Isósceles";
+
+  if (a == b && b == c) {
+    return equilatero;
+  } else if (a != b && b != c && c != a) {
+    return escaleno;
+  } else {
+    return isoceles;
+  }
 }
 
 // Exercício 9
