@@ -10,7 +10,7 @@ const Form = styled.main`
 `;
 
 const Proximo = styled.button`
-  margin: 16px;
+  margin: 24px;
 `;
 
 export default class App extends React.Component {
@@ -26,8 +26,6 @@ export default class App extends React.Component {
         return <Etapa2 />;
       case 3:
         return <Etapa3 />;
-      case 4:
-        return <Final />;
     }
   };
 
@@ -39,7 +37,11 @@ export default class App extends React.Component {
     return (
       <Form>
         {this.renderizaEtapa()}
-        <Proximo onClick={this.irParaProximaEtapa}>Próxima Etapa</Proximo>
+        {this.state.etapa < 4 ? (
+          <Proximo onClick={this.irParaProximaEtapa}>Próxima Etapa</Proximo>
+        ) : (
+          <Final />
+        )}
       </Form>
     );
   }

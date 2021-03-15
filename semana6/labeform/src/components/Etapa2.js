@@ -1,19 +1,13 @@
 import React from "react";
-import styled from "styled-components";
+import PerguntaAberta from "./PerguntaAberta";
 
 export default class Etapa2 extends React.Component {
   render() {
     return (
       <section>
         <h3>INFORMAÇÕES DO ENSINO SUPERIOR</h3>
-        <div>
-          <p>5. Qual curso?</p>
-          <input type="text"></input>
-        </div>
-        <div>
-          <p>6. Qual a unidade de ensino?</p>
-          <input type="text"></input>
-        </div>
+        <PerguntaAberta pergunta={"Qual curso de graduação?"} />
+        <PerguntaAberta pergunta={"Qual a instituição de ensino?"} />
       </section>
     );
   }
