@@ -3,6 +3,15 @@ import PerguntaAberta from "./PerguntaAberta";
 import PerguntaFechada from "./PerguntaFechada";
 
 export default class Etapa1 extends React.Component {
+  state = {
+    opcoes: [
+      "Ensino Médio Incompleto",
+      "Ensino Médio Completo",
+      "Ensino Superior Incompleto",
+      "Ensino Superior Completo",
+    ],
+  };
+
   render() {
     return (
       <section>
@@ -12,12 +21,7 @@ export default class Etapa1 extends React.Component {
         <PerguntaAberta pergunta={"Qual o seu e-mail?"} />
         <PerguntaFechada
           pergunta={"Qual a sua escolaridade?"}
-          opcoes={[
-            "Ensino Médio Incompleto",
-            "Ensino Médio Completo",
-            "Ensino Superior Incompleto",
-            "Ensino Superior Completo",
-          ]}
+          opcoes={this.state.opcoes}
         />
       </section>
     );

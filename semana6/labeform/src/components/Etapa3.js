@@ -1,6 +1,6 @@
 import React from "react";
 import PerguntaAberta from "./PerguntaAberta";
-import PerguntaOpcoes from "./PerguntaFechada";
+import PerguntaFechada from "./PerguntaFechada";
 
 export default class Etapa3 extends React.Component {
   render() {
@@ -10,7 +10,7 @@ export default class Etapa3 extends React.Component {
         <PerguntaAberta
           pergunta={"Por que você não terminou um curso de graduação?"}
         />
-        <PerguntaOpcoes
+        <PerguntaFechada
           pergunta={"Você fez algum curso complementar?"}
           opcoes={[
             "Curso Técnico",
