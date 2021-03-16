@@ -55,29 +55,33 @@ class App extends React.Component {
         tarefas: novaTarefa,
         inputValue: "",
       });
-      return novaTarefa
+      return novaTarefa;
     } else {
-      return alert("Digite a tarefa.")
+      return alert("Digite a tarefa.");
     }
   };
 
   selectTarefa = (id) => {
-    console.log("Alterou tarefa")
+    console.log("Alterou tarefa");
     const novaListaDeTarefas = this.state.tarefas.map((tarefa) => {
       if (id === tarefa.id) {
-        const tarefaNova = {
+        const tarefaAlterada = {
           ...tarefa,
-          completa: !tarefa.completa
-        }
-        return tarefaNova
+          completa: !tarefa.completa,
+        };
+        return tarefaAlterada;
       } else {
-        return tarefa
+        return tarefa;
       }
-    })
-    this.setState({tarefas: novaListaDeTarefas})
+    });
+    this.setState({ tarefas: novaListaDeTarefas });
   };
 
-  onChangeFilter = (event) => {};
+  onChangeFilter = (event) => {
+    this.setState({
+      filtro: event.target.value,
+    });
+  };
 
   render() {
     const listaFiltrada = this.state.tarefas.filter((tarefa) => {
