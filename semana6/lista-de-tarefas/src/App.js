@@ -55,10 +55,27 @@ class App extends React.Component {
         tarefas: novaTarefa,
         inputValue: "",
       });
+      return novaTarefa
+    } else {
+      return alert("Digite a tarefa.")
     }
   };
 
-  selectTarefa = (id) => {};
+  selectTarefa = (id) => {
+    console.log("Alterou tarefa")
+    const novaListaDeTarefas = this.state.tarefas.map((tarefa) => {
+      if (id === tarefa.id) {
+        const tarefaNova = {
+          ...tarefa,
+          completa: !tarefa.completa
+        }
+        return tarefaNova
+      } else {
+        return tarefa
+      }
+    })
+    this.setState({tarefas: novaListaDeTarefas})
+  };
 
   onChangeFilter = (event) => {};
 
