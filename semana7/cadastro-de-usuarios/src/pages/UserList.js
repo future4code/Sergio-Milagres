@@ -3,6 +3,34 @@ import styled, { ThemeConsumer } from "styled-components";
 import axios from "axios";
 import { baseUrl, axiosConfig } from "./parameters";
 
+const Main = styled.main`
+ width: 400px;
+  text-align: center;
+
+  div {
+    border-bottom: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      align-self: center;
+      background-color: #ffffff;
+      font-weight: bold;
+      color: #c1121f;
+      height: 24px;
+      width: 24px;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      cursor: pointer;
+      :hover {
+        background-color: #c1121f;
+        color: white;
+      }
+    }
+  }
+`;
+
 class UserList extends React.Component {
   state = {
     users: [],
@@ -44,10 +72,10 @@ class UserList extends React.Component {
       );
     });
     return (
-      <div>
+      <Main>
         <h2>Lista de usuários</h2>
         {mapUsers}
-      </div>
+      </Main>
     );
   }
 }

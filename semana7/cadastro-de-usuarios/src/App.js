@@ -16,18 +16,24 @@ const Main = styled.main`
   h1 {
     color: #21217b;
   }
-`;
 
-const Button = styled.button`
-  margin: 8px;
-  height: 32px;
-  width: 160px;
-  border: none;
-  border-radius: 8px;
-  outline: none;
-  :hover {
-    background-color: #2e86cf;
-    color: white;
+  section {
+    margin: 16px;
+  }
+
+  button {
+    background-color: #ffffff;
+    margin: 8px;
+    height: 32px;
+    width: 160px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    :hover {
+      background-color: #21217b;
+      color: white;
+    }
   }
 `;
 
@@ -58,8 +64,8 @@ class App extends React.Component {
     return (
       <Main>
         <h1>Labenusers</h1>
-        <div>{this.renderPage()}</div>
-        <Button onClick={this.changePage}>{this.state.button}</Button>
+        <section>{this.renderPage()}</section>
+        <button onClick={this.changePage}>{this.state.button}</button>
       </Main>
     );
   }

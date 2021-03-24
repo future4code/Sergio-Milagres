@@ -3,6 +3,38 @@ import styled from "styled-components";
 import axios from "axios";
 import { baseUrl, axiosConfig } from "./parameters";
 
+const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+
+  label {
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+
+  input {
+    height: 24px;
+    border-radius: 8px;
+    outline: none;
+  }
+
+  button {    
+    align-self: center;
+    background-color: #ffffff;
+    margin: 24px;
+    height: 32px;
+    width: 96px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    :hover {
+      background-color: #2e86cf;
+      color: white;
+    }
+  }
+`;
+
 class UserRegistration extends React.Component {
   state = {
     name: "",
@@ -36,22 +68,22 @@ class UserRegistration extends React.Component {
 
   render() {
     return (
-      <div>
+      <Main>
         <h2>Cadastro de usuário</h2>
+        <label>Nome de usuário:</label>
         <input
           type="text"
           onChange={this.onChangeName}
           value={this.state.name}
-          placeholder="Nome de usuário"
         ></input>
+        <label>E-mail:</label>
         <input
           type="email"
           onChange={this.onChangeEmail}
           value={this.state.email}
-          placeholder="E-mail"
         ></input>
         <button onClick={this.createUser}>Criar usuário</button>
-      </div>
+      </Main>
     );
   }
 }
