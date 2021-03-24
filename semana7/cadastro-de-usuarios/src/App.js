@@ -20,22 +20,23 @@ const Main = styled.main`
   section {
     margin: 16px;
   }
-
-  button {
-    background-color: #ffffff;
-    margin: 8px;
-    height: 32px;
-    width: 160px;
-    border: none;
-    border-radius: 8px;
-    outline: none;
-    cursor: pointer;
-    :hover {
-      background-color: #21217b;
-      color: white;
-    }
-  }
 `;
+
+const Button = styled.button`
+  font-weight: bold;
+  background-color: #ffffff;
+  margin: 8px;
+  height: 32px;
+  width: 168px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+  :hover {
+    background-color: #21217b;
+    color: white;
+  }
+`
 
 class App extends React.Component {
   state = {
@@ -65,7 +66,7 @@ class App extends React.Component {
       <Main>
         <h1>Labenusers</h1>
         <section>{this.renderPage()}</section>
-        <button onClick={this.changePage}>{this.state.button}</button>
+        <Button onClick={this.changePage}>{this.state.button}</Button>
       </Main>
     );
   }
