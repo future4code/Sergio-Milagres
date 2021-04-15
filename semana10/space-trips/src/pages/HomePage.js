@@ -16,7 +16,7 @@ const HomePage = () => {
     <div>
       <p>Home</p>
       <button onClick={goToListTripsPage}>Ver Viagens</button>
-      <button onClick={goToLoginPage}>Login</button>
+      <button onClick={goToLoginPage}>Painel Administrativo</button>
     </div>
   );
 };

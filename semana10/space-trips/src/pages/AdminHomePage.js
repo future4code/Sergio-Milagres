@@ -1,11 +1,35 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useHistory, useParams } from "react-router-dom";
+import { useProtectedPage } from "../hooks/useProtectedPage";
+import CardTrip from "../components/CardTrip";
 
 const ListTripsPage = () => {
+  const [trips, setTrips] = useState([]);
   const history = useHistory();
+  const pathParams = useParams();
 
-  const goToTripDetailsPage = () => {
-    history.push("/admin/trips/:id");
+  useProtectedPage();
+
+  useEffect(() => {
+    getTrips();
+  }, []);
+
+  const getTrips = () => {
+    axios
+      .get(
+        "https://us-central1-labenu-apis.cloudfunctions.net/labeX/sergio-milagres-cruz/trips",
+      )
+      .then((res) => {
+        setTrips(res.data.trips); 
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const goToTripDetailsPage = (id) => {
+    history.push(`/admin/trips/${id}`);
   };
 
   const goToCreateTripPage = () => {
@@ -13,11 +37,12 @@ const ListTripsPage = () => {
   };
 
   const logOut = () => {
+    localStorage.removeItem("token")
     history.push("/");
   };
 
-  const goBack = () => {
-    history.goBack();
+  const goHomePage = () => {
+    history.push("/");
   };
 
   return (
@@ -25,10 +50,13 @@ const ListTripsPage = () => {
       <h1>Painel Administrativo</h1>
       <button onClick={goToCreateTripPage}>Criar Viagem</button>
       <button onClick={logOut}>Logout</button>
-      <button onClick={goBack}>Voltar</button>
-      <p>Viagem para Marte</p>
-      <p>60 dias</p>
-      <button onClick={goToTripDetailsPage}>Ver Detalhes</button>
+      <button onClick={goHomePage}>Home</button>
+      {trips.map((trip) => {
+          return <div>
+            <CardTrip details={goToTripDetailsPage} trip={trip}>
+            </CardTrip>
+          </div>       
+          })}
     </div>
   );
 };
