@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory, useParams } from "react-router-dom";
 import { useProtectedPage } from "../hooks/useProtectedPage";
-import CardTrip from "../components/CardTrip";
 
 const ListTripsPage = () => {
   const [trips, setTrips] = useState([]);
@@ -18,10 +17,10 @@ const ListTripsPage = () => {
   const getTrips = () => {
     axios
       .get(
-        "https://us-central1-labenu-apis.cloudfunctions.net/labeX/sergio-milagres-cruz/trips",
+        "https://us-central1-labenu-apis.cloudfunctions.net/labeX/sergio-milagres-cruz/trips"
       )
       .then((res) => {
-        setTrips(res.data.trips); 
+        setTrips(res.data.trips);
       })
       .catch((err) => {
         console.log(err);
@@ -37,7 +36,7 @@ const ListTripsPage = () => {
   };
 
   const logOut = () => {
-    localStorage.removeItem("token")
+    localStorage.removeItem("token");
     history.push("/");
   };
 
@@ -52,11 +51,16 @@ const ListTripsPage = () => {
       <button onClick={logOut}>Logout</button>
       <button onClick={goHomePage}>Home</button>
       {trips.map((trip) => {
-          return <div>
-            <CardTrip details={goToTripDetailsPage} trip={trip}>
-            </CardTrip>
-          </div>       
-          })}
+        return (
+          <div>
+            <div>
+              <button onClick={() => goToTripDetailsPage(trip.id)}>
+              <p>{trip.name}</p>
+              </button>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };
