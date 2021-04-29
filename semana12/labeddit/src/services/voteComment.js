@@ -1,8 +1,7 @@
 import axios from "axios";
 import { BASE_URL } from "../constants/apiConstants";
-import { goToPostFeed } from "../routes/coordinator";
 
-export const voteComment = (postId, body, commentId, history) => {
+export const voteComment = (postId, body, commentId, getData) => {
   const token = localStorage.getItem("token");
 
   axios
@@ -11,12 +10,10 @@ export const voteComment = (postId, body, commentId, history) => {
         Authorization: token,
       },
     })
-    .then((response) => {
-      console.log(response);
+    .then(() => {
+      getData()
     })
-    .catch((error) => {
-      alert("Erro ao votar no Post!");
-      console.log(error.message);
-      console.log(body);
+    .catch(() => {
+      alert("Erro ao reagir ao comentário!");
     });
 };

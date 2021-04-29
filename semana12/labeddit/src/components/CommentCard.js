@@ -1,5 +1,6 @@
-import React from "react";
-import { voteComment } from "../services/voteComment";
+import { useState } from "react";
+import axios from "axios";
+import { BASE_URL } from "../constants/apiConstants";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import {
@@ -7,17 +8,97 @@ import {
   CountVoteContainer,
   CardStyled,
   VoteIcon,
-} from "../styles/CommentCard";
+} from "../styles/CommentCardStyle";
 import { useHistory } from "react-router-dom";
-import Card from "@material-ui/core/Card";
-import Button from "@material-ui/core/Button";
 import positivo from "../assets/positivo.png";
 import negativo from "../assets/negativo.png";
+import positivo_BW from "../assets/positivo_pb.png";
+import negativo_BW from "../assets/negativo_pb.png";
 
-const PostCard = (props) => {
+const CommentCard = (props) => {
   const history = useHistory();
-  const commentBodyUp = { userVoteDirection: 1 };
-  const commentBodyDown = { userVoteDirection: -1 };
+  const [buttonUp, setButtonUp] = useState(false);
+  const [buttonDown, setButtonDown] = useState(false);
+  const [buttonUpIcon, setButtonUpIcon] = useState(positivo_BW);
+  const [buttonDownIcon, setButtonDownIcon] = useState(negativo_BW);
+
+  const voteUpComment = (postId, button, commentId, getData) => {
+    const token = localStorage.getItem("token");
+    let body = { direction: 0 };
+
+    if (button) {
+      setButtonUp(!buttonUp);
+      body = { direction: 0 };
+      setButtonUpIcon(positivo_BW);
+    } else {
+      if (buttonDown) {
+        setButtonUp(!buttonUp);
+        body = { direction: 1 };
+        setButtonUpIcon(positivo);
+        setButtonDownIcon(negativo_BW);
+        setButtonDown(false);
+      } else {
+        setButtonUp(!buttonUp);
+        body = { direction: 1 };
+        setButtonUpIcon(positivo);
+      }
+    }
+
+    axios
+      .put(`${BASE_URL}/posts/${postId}/comment/${commentId}/vote`, body, {
+        headers: {
+          Authorization: token,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        getData();
+      })
+      .catch((error) => {
+        alert("Erro ao votar no comentário!");
+        console.log(error.message);
+        console.log(body);
+      });
+  };
+
+  const voteDownComment = (postId, button, commentId, getData) => {
+    const token = localStorage.getItem("token");
+    let body = { direction: 0 };
+
+    if (button) {
+      setButtonDown(!buttonDown);
+      body = { direction: 0 };
+      setButtonDownIcon(negativo_BW);
+    } else {
+      if (buttonUp) {
+        setButtonDown(!buttonDown);
+        body = { direction: -1 };
+        setButtonDownIcon(negativo);
+        setButtonUpIcon(positivo_BW);
+        setButtonUp(false);
+      } else {
+        setButtonDown(!buttonDown);
+        body = { direction: -1 };
+        setButtonDownIcon(negativo);
+      }
+    }
+
+    axios
+      .put(`${BASE_URL}/posts/${postId}/comment/${commentId}/vote`, body, {
+        headers: {
+          Authorization: token,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        getData();
+      })
+      .catch((error) => {
+        alert("Erro ao votar no comentário!");
+        console.log(error.message);
+        console.log(body);
+      });
+  };
 
   return (
     <>
@@ -33,18 +114,23 @@ const PostCard = (props) => {
         <CardActionsStyled>
           <CountVoteContainer>
             <VoteIcon
-              src={positivo}
+              src={buttonUpIcon}
               onClick={() =>
-                voteComment(props.userId, commentBodyUp, props.id, history)
+                voteUpComment(props.userId, buttonUp, props.id, props.getData)
               }
             ></VoteIcon>
             <Typography variant="body2" component="p">
               {props.votesCount}
             </Typography>
             <VoteIcon
-              src={negativo}
+              src={buttonDownIcon}
               onClick={() =>
-                voteComment(props.userId, commentBodyDown, props.id, history)
+                voteDownComment(
+                  props.userId,
+                  buttonDown,
+                  props.id,
+                  props.getData
+                )
               }
             ></VoteIcon>
           </CountVoteContainer>
@@ -54,4 +140,4 @@ const PostCard = (props) => {
   );
 };
 
-export default PostCard;
+export default CommentCard;

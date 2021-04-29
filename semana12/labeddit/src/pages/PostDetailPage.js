@@ -1,13 +1,12 @@
-import React from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useForm } from "../hooks/useForm";
 import logo from "../assets/logo_labeddit.png";
-import { votePost } from "../services/votePost";
-import { voteComment } from "../services/voteComment";
 import { createComment } from "../services/comment";
 import { useProtectPage } from "../hooks/useProtectPage";
 import { useRequestData } from "../hooks/useRequestData";
 import { BASE_URL } from "../constants/apiConstants";
+import axios from "axios";
 import { Typography } from "@material-ui/core";
 import {
   VoteIcon,
@@ -20,11 +19,13 @@ import {
   CardActionsStyled,
   CountVoteContainer,
   CardStyled,
-} from "../styles/PostDetailPage";
+} from "../styles/PostDetailPageStyle";
 import CardContent from "@material-ui/core/CardContent";
 import CommentCard from "../components/CommentCard";
 import positivo from "../assets/positivo.png";
 import negativo from "../assets/negativo.png";
+import positivo_BW from "../assets/positivo_pb.png";
+import negativo_BW from "../assets/negativo_pb.png";
 import { useHistory } from "react-router-dom";
 
 const PostDetailPage = () => {
@@ -37,11 +38,15 @@ const PostDetailPage = () => {
   );
   const postDetails = data.post;
   const postComments = postDetails && postDetails.comments;
-  console.log("Post Comments:", postComments);
-  const bodyUp = { direction: 1 };
-  const bodyDown = { direction: -1 };
+  const orderPostsComments =
+    postComments &&
+    postComments.sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
+  const [buttonUp, setButtonUp] = useState(false);
+  const [buttonDown, setButtonDown] = useState(false);
+  const [buttonUpIcon, setButtonUpIcon] = useState(positivo_BW);
+  const [buttonDownIcon, setButtonDownIcon] = useState(negativo_BW);
 
-  const { form, onChange } = useForm({ text: "" });
+  const { form, onChange, resetForm } = useForm({ text: "" });
 
   const handleInputChange = (event) => {
     const { value, name } = event.target;
@@ -50,8 +55,87 @@ const PostDetailPage = () => {
 
   const handleSubmission = (event) => {
     event.preventDefault();
-    createComment(postDetails.id, form, history);
-    console.log("teste, testandoooo");
+    createComment(postDetails.id, form, getData, history);
+    resetForm();
+    getData();
+  };
+
+  const voteUpPost = (postId, button, getData) => {
+    const token = localStorage.getItem("token");
+    let body = { direction: 0 };
+
+    if (button) {
+      setButtonUp(!buttonUp);
+      body = { direction: 0 };
+      setButtonUpIcon(positivo_BW);
+    } else {
+      if (buttonDown) {
+        setButtonUp(!buttonUp);
+        body = { direction: 1 };
+        setButtonUpIcon(positivo);
+        setButtonDownIcon(negativo_BW);
+        setButtonDown(false);
+      } else {
+        setButtonUp(!buttonUp);
+        body = { direction: 1 };
+        setButtonUpIcon(positivo);
+      }
+    }
+
+    axios
+      .put(`${BASE_URL}/posts/${postId}/vote`, body, {
+        headers: {
+          Authorization: token,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        getData();
+      })
+      .catch((error) => {
+        alert("Erro ao votar no Post!");
+        console.log(error.message);
+        console.log(body);
+      });
+  };
+
+  const voteDownPost = (postId, button, getData) => {
+    const token = localStorage.getItem("token");
+    let body = { direction: 0 };
+
+    if (button) {
+      setButtonDown(!buttonDown);
+      body = { direction: 0 };
+      setButtonDownIcon(negativo_BW);
+    } else {
+      if (buttonUp) {
+        setButtonDown(!buttonDown);
+        body = { direction: -1 };
+        setButtonDownIcon(negativo);
+        setButtonUpIcon(positivo_BW);
+        setButtonUp(false);
+      } else {
+        setButtonDown(!buttonDown);
+        body = { direction: -1 };
+        setButtonDownIcon(negativo);
+      }
+    }
+
+    axios
+      .put(`${BASE_URL}/posts/${postId}/vote`, body, {
+        headers: {
+          Authorization: token,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        getData();
+      })
+      .catch((error) => {
+        alert("Erro ao votar no Post!");
+        console.log(error.message);
+        console.log(body);
+      });
   };
 
   return (
@@ -76,15 +160,15 @@ const PostDetailPage = () => {
             <CardActionsStyled>
               <CountVoteContainer>
                 <VoteIcon
-                  src={positivo}
-                  onClick={() => votePost(postDetails.id, bodyUp, history)}
+                  src={buttonUpIcon}
+                  onClick={() => voteUpPost(params.id, buttonUp, getData)}
                 ></VoteIcon>
                 <Typography variant="body2" component="p">
                   {postDetails.votesCount}
                 </Typography>
                 <VoteIcon
-                  src={negativo}
-                  onClick={() => votePost(postDetails.id, bodyDown, history)}
+                  src={buttonDownIcon}
+                  onClick={() => voteDownPost(params.id, buttonDown, getData)}
                 ></VoteIcon>
               </CountVoteContainer>
               <Typography variant="h6" component="h6">
@@ -115,7 +199,7 @@ const PostDetailPage = () => {
                     id={comment.id}
                     text={comment.text}
                     username={comment.username}
-                    userId={postDetails.id}
+                    userId={params.id}
                     votesCount={comment.votesCount}
                     getData={getData}
                   />

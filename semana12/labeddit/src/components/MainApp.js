@@ -1,33 +1,38 @@
-import React from "react";
+import { useContext } from "react";
+import GlobalStateContext from "../globalContext/GlobalStateContext";
 import { useHistory } from "react-router-dom";
-import { goToPostFeed, goToLogin } from "../routes/coordinator";
-import { ButtonsContainer, AppBar } from "../styles/MainApp";
+import { goToPostFeed } from "../routes/coordinator";
+import { ButtonsContainer, AppBar } from "../styles/MainAppStyle";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 
 const MainApp = () => {
   const history = useHistory();
+  const { labelLog, setLabelLog } = useContext(GlobalStateContext);
 
-  /* const token = window.localStorage.getItem("token")
-    const username = window.localStorage.getItem("username")
-    let goToFunction = ""
-    let labelButton = ""
-    if (token) {
-      goToFunction = ""
-      labelButton = ""
-    } else {
-      
-    } */
-
+  const goToLogin = (history) => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    setLabelLog("Login");
+    history.push("/");
+  };
   return (
     <AppBar>
       <Toolbar>
         <ButtonsContainer>
-          <Button variant="contained" color="primary" onClick={() => goToPostFeed(history)}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => goToPostFeed(history)}
+          >
             Posts Recentes
           </Button>
-          <Button variant="contained" color="primary" onClick={() => goToLogin(history)}>
-            Logout
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => goToLogin(history)}
+          >
+            {labelLog}
           </Button>
         </ButtonsContainer>
       </Toolbar>

@@ -7,7 +7,7 @@ import {
   FormContainer,
   Logomarca,
   SignupPageContainer,
-} from "../styles/SignUpPage";
+} from "../styles/SignUpPageStyle";
 import { useHistory } from "react-router-dom";
 import { signup } from "../services/user";
 import { useUnprotectPage } from "../hooks/useUnprotectPage";
@@ -34,12 +34,14 @@ const SignUpPage = () => {
       <Logomarca src={logo} />
       <FormContainer onSubmit={handleSubmission}>
         <TextField
-          label="Nome"
+          label="Nome de Usuário"
           variant="outlined"
+          type="name"
           name="username"
           value={form.username}
           onChange={handleInputChange}
           required
+          autoComplete= "off"
         />
         <TextField
           label="E-mail"

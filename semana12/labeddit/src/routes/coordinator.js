@@ -1,7 +1,7 @@
 export const goToLogin = (history) => {
   localStorage.removeItem("token");
   localStorage.removeItem("username");
-  history.push("/login");
+  history.push("/");
 };
 
 export const goToSignUp = (history) => {

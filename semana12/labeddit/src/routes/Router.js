@@ -9,13 +9,13 @@ import ErrorPage from "../pages/ErrorPage";
 const Router = () => {
   return (
     <Switch>
-      <Route exact path={"/login"}>
+      <Route exact path={"/"}>
         <LoginPage />
       </Route>
       <Route exact path={"/cadastro"}>
         <SignUpPage />
       </Route>
-      <Route exact path={["/feed", "/"]}>
+      <Route exact path={["/feed"]}>
         <PostFeedPage />
       </Route>
       <Route exact path={"/detail/:id"}>

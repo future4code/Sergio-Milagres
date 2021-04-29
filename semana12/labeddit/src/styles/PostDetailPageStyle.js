@@ -11,7 +11,6 @@ export const CardStyled = styled(Card)`
   width: 50vw;
   min-width: 300px;
   margin: 10px;
-  height: 100vh;
 `;
 
 export const CardMediaStyled = styled(CardMedia)`
@@ -36,7 +35,6 @@ export const CountVoteContainer = styled.div`
 export const PostDetailPageContainer = styled.div`
   width: 60vw;
   max-width: 375px;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -51,16 +49,16 @@ export const TextFieldStyled = styled(TextField)`
 `;
 
 export const ButtonStyled = styled(Button)`
+  
   width: 50vw;
   min-width: 300px;
-  margin-top: 5px;
+  margin-top: 15px;
 `;
 
 export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   width: 50vw;
-  height: 52vh;
   justify-content: space-around;
   margin-bottom: 15px;
 `;

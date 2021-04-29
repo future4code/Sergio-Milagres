@@ -10,9 +10,8 @@ export const login = (body, history) => {
       localStorage.setItem("username", response.data.user.username);
       goToPostFeed(history);
     })
-    .catch((error) => {
+    .catch(() => {
       alert("Erro ao cadastar usuário!");
-      console.log(error.message);
     });
 };
 
@@ -24,7 +23,6 @@ export const signup = (body, history) => {
       localStorage.setItem("username", response.data.user.username);
       goToPostFeed(history);
     })
-    .catch((error) => {
-      console.log(error.message);
+    .catch(() => {
     });
 };
