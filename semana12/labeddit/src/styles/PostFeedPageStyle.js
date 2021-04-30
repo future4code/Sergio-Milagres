@@ -8,7 +8,6 @@ export const PostFeedPageContainer = styled.div`
   flex-direction: column;
   width: 85vw;
   max-width: 375px;
-  padding-top: 15px;
   margin: 0 auto;
 `;
 
@@ -18,8 +17,8 @@ export const TextFieldStyled = styled(TextField)`
 `;
 
 export const ButtonStyled = styled(Button)`
-  width: 50vw;
-  min-width: 300px;
+  width: 64px;
+  align-self: flex-end;
 `;
 
 export const FormContainer = styled.form`
@@ -33,7 +32,7 @@ export const FormContainer = styled.form`
 
 export const Logomarca = styled.img`
   max-height: 18vh;
-  margin: 0 auto;
+  margin-bottom: 16px;
 `;
 
 export const LogoContainer = styled.div`
@@ -42,5 +41,4 @@ export const LogoContainer = styled.div`
   width: 50vw;
   min-width: 350px;
   justify-content: center;
-  margin-top: 15px;
 `;

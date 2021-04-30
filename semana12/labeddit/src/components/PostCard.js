@@ -51,14 +51,11 @@ const PostCard = (props) => {
           Authorization: token,
         },
       })
-      .then((response) => {
-        console.log(response);
+      .then(() => {
         getData();
       })
-      .catch((error) => {
+      .catch(() => {
         alert("Erro ao votar no Post!");
-        console.log(error.message);
-        console.log(body);
       });
   };
 
@@ -90,14 +87,11 @@ const PostCard = (props) => {
           Authorization: token,
         },
       })
-      .then((response) => {
-        console.log(response);
+      .then(() => {
         getData();
       })
-      .catch((error) => {
+      .catch(() => {
         alert("Erro ao votar no Post!");
-        console.log(error.message);
-        console.log(body);
       });
   };
 

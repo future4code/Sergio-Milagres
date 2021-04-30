@@ -2,10 +2,8 @@ import styled from "styled-components";
 import { Card, CardActions, CardMedia } from "@material-ui/core";
 
 export const CardStyled = styled(Card)`
-  width: 50vw;
   min-width: 300px;
   margin: 10px;
-  cursor: pointer;
 `;
 
 export const CardMediaStyled = styled(CardMedia)`
@@ -20,10 +18,10 @@ export const CountVoteContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  width: 3vw;
-  min-width: 150px;
-  justify-content: space-between;
+  width: 2vw;
+  min-width: 100px;
   align-items: center;
+  justify-content: space-between;
 `;
 export const VoteIcon = styled.img`
   height: 4vh;

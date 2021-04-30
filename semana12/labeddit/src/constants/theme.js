@@ -4,6 +4,8 @@ import {
   hoverPrimaryColor,
   activePrimaryColor,
   mainSecondaryColor,
+  hoverSecondaryColor,
+  activeSecondaryColor,
 } from "./colors";
 
 const theme = createMuiTheme({
@@ -14,8 +16,10 @@ const theme = createMuiTheme({
       light: activePrimaryColor,
       contrastText: "#fff",
     },
-    secondary: {      
+    secondary: {
+      dark: hoverSecondaryColor,
       main: mainSecondaryColor,
+      light: activeSecondaryColor,
       contrastText: "#fff",
     },
   },
@@ -24,10 +28,16 @@ const theme = createMuiTheme({
     MuiButton: {
       root: {
         borderRadius: 9999,
-        textTransform: 'none'
-      }, 
-    }, 
-  }, 
+        textTransform: "none",
+      },
+    },
+
+    MuiInputBase: {
+      input: {
+        backgroundColor: "white",
+      },
+    },
+  },
 });
 
 export default theme;

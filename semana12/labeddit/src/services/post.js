@@ -1,7 +1,8 @@
 import axios from "axios";
 import { BASE_URL } from "../constants/apiConstants";
+import { goToPostFeed } from "../routes/coordinator";
 
-export const createPost = (body, getData) => {
+export const createPost = (body, history, getData) => {
   const token = localStorage.getItem("token");
 
   axios
@@ -11,9 +12,10 @@ export const createPost = (body, getData) => {
       },
     })
     .then(() => {
+      goToPostFeed(history);
       getData();
     })
-    .catch(() => {
+    .catch((error) => {
       alert("Erro ao postar!");
     });
 };

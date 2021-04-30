@@ -3,7 +3,13 @@ import { useForm } from "../hooks/useForm";
 import { login } from "../services/user";
 import { TextField, Button } from "@material-ui/core";
 import logo from "../assets/logo_labeddit.png";
-import { TextFieldStyled, ButtonStyled, FormContainer, LoginPageContainer, Logomarca } from "../styles/LoginPageStyle";
+import {
+  TextFieldStyled,
+  ButtonStyled,
+  FormContainer,
+  LoginPageContainer,
+  Logomarca,
+} from "../styles/LoginPageStyle";
 import { useHistory } from "react-router-dom";
 import { useUnprotectPage } from "../hooks/useUnprotectPage";
 import { goToSignUp } from "../routes/coordinator";
@@ -50,8 +56,12 @@ const LoginPage = () => {
           Entrar
         </Button>
       </FormContainer>
-      <Button variant="contained" color="secondary" onClick={() => goToSignUp(history)}>
-      Não tem uma conta? Cadastre-se
+      <Button
+        variant="contained"
+        color="secondary"
+        onClick={() => goToSignUp(history)}
+      >
+        Não tem uma conta? Cadastre-se
       </Button>
     </LoginPageContainer>
   );

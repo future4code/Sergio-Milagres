@@ -27,6 +27,9 @@ const PostFeedPage = () => {
 
   const posts = data.posts;
 
+  const orderPosts =
+    posts && posts.sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
+
   const handleInputChange = (event) => {
     const { value, name } = event.target;
     onChange(value, name);
@@ -35,7 +38,7 @@ const PostFeedPage = () => {
   const handleSubmission = (event) => {
     event.preventDefault();
     createPost(form, history, getData);
-    resetForm()
+    resetForm();
   };
 
   return (
@@ -65,7 +68,7 @@ const PostFeedPage = () => {
         </ButtonStyled>
       </FormContainer>
       {posts &&
-        posts.map((post) => {
+        orderPosts.map((post) => {
           return (
             <PostCard
               key={post.id}

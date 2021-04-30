@@ -88,14 +88,11 @@ const PostDetailPage = () => {
           Authorization: token,
         },
       })
-      .then((response) => {
-        console.log(response);
+      .then(() => {
         getData();
       })
-      .catch((error) => {
+      .catch(() => {
         alert("Erro ao votar no Post!");
-        console.log(error.message);
-        console.log(body);
       });
   };
 
@@ -127,14 +124,11 @@ const PostDetailPage = () => {
           Authorization: token,
         },
       })
-      .then((response) => {
-        console.log(response);
+      .then(() => {
         getData();
       })
-      .catch((error) => {
+      .catch(() => {
         alert("Erro ao votar no Post!");
-        console.log(error.message);
-        console.log(body);
       });
   };
 
@@ -192,7 +186,7 @@ const PostDetailPage = () => {
 
           <CardStyled>
             {postComments &&
-              postComments.map((comment) => {
+              orderPostsComments.map((comment) => {
                 return (
                   <CommentCard
                     key={comment.id}

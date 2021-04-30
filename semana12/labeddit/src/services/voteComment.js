@@ -11,7 +11,7 @@ export const voteComment = (postId, body, commentId, getData) => {
       },
     })
     .then(() => {
-      getData()
+      getData();
     })
     .catch(() => {
       alert("Erro ao reagir ao comentário!");

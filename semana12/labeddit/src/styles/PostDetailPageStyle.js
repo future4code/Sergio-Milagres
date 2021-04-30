@@ -26,46 +26,43 @@ export const CountVoteContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  width: 3vw;
-  min-width: 150px;
+  width: 2vw;
+  min-width: 100px;
   justify-content: space-between;
   align-items: center;
 `;
 
 export const PostDetailPageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   width: 60vw;
   max-width: 375px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  margin: 20px auto;
-  padding-top: 15px;
+  margin: auto;
 `;
 
 export const TextFieldStyled = styled(TextField)`
   width: 50vw;
-  min-width: 300px;
 `;
 
 export const ButtonStyled = styled(Button)`
-  
-  width: 50vw;
-  min-width: 300px;
-  margin-top: 15px;
+  width: 64px;
+  align-self: flex-end;
 `;
 
 export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   width: 50vw;
+  height: 20vh;
   justify-content: space-around;
   margin-bottom: 15px;
 `;
 
 export const Logomarca = styled.img`
   max-height: 18vh;
-  margin: 0 auto;
+  margin-bottom: 16px;
 `;
 
 export const LogoContainer = styled.div`
@@ -74,7 +71,6 @@ export const LogoContainer = styled.div`
   width: 50vw;
   min-width: 350px;
   justify-content: center;
-  margin-top: 15px;
 `;
 
 export const VoteIcon = styled.img`

@@ -16,10 +16,7 @@ export const useRequestData = (url, initialState) => {
       .then((response) => {
         setData(response.data);
       })
-      .catch((error) => {
-        console.log("Deu erro!!");
-        console.log("Mensagem de Erro:", error.message);
-      });
+      .catch(() => {});
   }, [url]);
 
   const getData = () => {
@@ -34,10 +31,7 @@ export const useRequestData = (url, initialState) => {
       .then((response) => {
         setData(response.data);
       })
-      .catch((error) => {
-        console.log("Deu erro!!");
-        console.log("Mensagem de Erro:", error.message);
-      });
+      .catch(() => {});
   };
 
   return { data, getData };

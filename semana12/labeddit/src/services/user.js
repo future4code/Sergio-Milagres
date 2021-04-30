@@ -11,7 +11,7 @@ export const login = (body, history) => {
       goToPostFeed(history);
     })
     .catch(() => {
-      alert("Erro ao cadastar usuário!");
+      alert("Email ou senha inválidos!");
     });
 };
 
@@ -24,5 +24,6 @@ export const signup = (body, history) => {
       goToPostFeed(history);
     })
     .catch(() => {
+      alert("Erro ao cadastar usuário!");
     });
 };

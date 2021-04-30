@@ -1,7 +1,6 @@
 import React from "react";
 import { useForm } from "../hooks/useForm";
 import { TextField, Button } from "@material-ui/core";
-//import logo from '../../assets/logo_labeddit.png';
 import logo from "../assets/logo_labeddit.png";
 import {
   FormContainer,
@@ -41,7 +40,12 @@ const SignUpPage = () => {
           value={form.username}
           onChange={handleInputChange}
           required
-          autoComplete= "off"
+          inputProps={{
+            autocomplete: "new-password",
+            form: {
+              autocomplete: "off",
+            },
+          }}
         />
         <TextField
           label="E-mail"
@@ -51,6 +55,12 @@ const SignUpPage = () => {
           value={form.email}
           onChange={handleInputChange}
           required
+          inputProps={{
+            autocomplete: "new-password",
+            form: {
+              autocomplete: "off",
+            },
+          }}
         />
         <TextField
           label="Senha"
@@ -60,6 +70,12 @@ const SignUpPage = () => {
           value={form.password}
           onChange={handleInputChange}
           required
+          inputProps={{
+            autocomplete: "new-password",
+            form: {
+              autocomplete: "off",
+            },
+          }}
         />
         <Button variant="contained" color="secondary" type="submit">
           Cadastrar

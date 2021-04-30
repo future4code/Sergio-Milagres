@@ -22,7 +22,7 @@ const Router = () => {
         <PostDetailPage />
       </Route>
       <Route>
-        <ErrorPage />
+        <ErrorPage />F
       </Route>
     </Switch>
   );

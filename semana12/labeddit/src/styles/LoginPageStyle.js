@@ -5,8 +5,7 @@ export const LoginPageContainer = styled.div`
   flex-direction: column;
   width: 85vw;
   max-width: 375px;
-  padding-top: 15px;
-  margin: 0 auto;
+  margin: auto;
 `;
 
 export const FormContainer = styled.form`
@@ -19,4 +18,5 @@ export const FormContainer = styled.form`
 
 export const Logomarca = styled.img`
   max-height: 18vh;
+  margin-bottom: 16px;
 `;
