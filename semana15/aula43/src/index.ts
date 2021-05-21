@@ -59,6 +59,43 @@ app.get("/countries/search", (req: Request, res: Response) => {
   }
 });
 
+// Endpoint 4)
+app.put("/countries/edit/:id", (req: Request, res: Response) => {
+  if (req.params.id) {
+    const id: string = req.params.id;
+
+    if (req.body.name || req.body.capital) {
+      if (req.body.name) {
+        const name: string = req.body.name;
+        countries.forEach((country) => {
+          if (country.id === Number(id)) {
+            country.name = name;
+          } else {
+            res.status(404).send("Id Not Found");
+          }
+        });
+      }
+
+      if (req.body.capital) {
+        const capital: string = req.body.capital;
+        countries.forEach((country) => {
+          if (country.id === Number(id)) {
+            country.capital = capital;
+          } else {
+            res.status(404).send("Id Not Found");
+          }
+        });
+      }
+
+      res.status(200).send("Success!");
+    } else {
+      res.status(400).send("Invalid Parameters");
+    }
+  } else {
+    res.status(400).send("Invalid Parameters");
+  }
+});
+
 app.listen(3003, () => {
   console.log("Servidor rodando na porta 3003");
 });
