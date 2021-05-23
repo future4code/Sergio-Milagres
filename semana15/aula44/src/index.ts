@@ -191,6 +191,43 @@ app.put("/user", (req: Request, res: Response) => {
 
 // b) A julgar por esta situação e pelo que fiz até agora, diria que sim, funciona normalmente. Porém, existem diferenças entre os métodos em termos de registro de atividade.
 
+// Exercício 5)
+app.put("/user/:id", (req: Request, res: Response) => {
+  let errorCode: number = 400;
+
+  try {
+    const reqBody: { id: number; name: string } = {
+      id: Number(req.params.id),
+      name: req.body.name,
+    };
+
+    if (!reqBody.name) {
+      errorCode = 422;
+      throw new Error("Nome inválido. Preencha corretamente.");
+    }
+
+    if (isNaN(Number(reqBody.id))) {
+      errorCode = 422;
+      throw new Error("Id inválido");
+    }
+
+    const myUserIndex = users.findIndex(
+      (u: User) => u.id === Number(reqBody.id)
+    );
+
+    if (myUserIndex === -1) {
+      errorCode = 404;
+      throw new Error("Usuário não encontrado");
+    }
+
+    users[myUserIndex].name = reqBody.name;
+
+    res.status(200).send({ message: "Usuário atualizado com sucesso!" });
+  } catch (error) {
+    res.status(errorCode).send({ message: error.message });
+  }
+});
+
 app.listen(3003, () => {
   console.log("Server is running at port 3003");
 });
