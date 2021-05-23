@@ -107,6 +107,34 @@ app.get("/user/search", (req: Request, res: Response) => {
 // a) Os parâmetros foram passados ​​por QueryParams. Porque seria necessário buscar um termo específico que pudesse aparecer em mais de um elemento do banco de dados.
 // b) o enum foi usado para definir os tipos válidos para a chave type. Além disso, foram feitas validações com estruturas IF para garantir que mensagens de erro sejam exibidas se o usuário não digitar nada ou digitar um tipo inválido.
 
+// Exercício 3)
+app.get("/user/byname/search", (req: Request, res: Response) => {
+  let errorCode: number = 400;
+  try {
+    const name: string = req.query.name as string;
+
+    if (!name) {
+      errorCode = 422;
+      throw new Error("Nome inválido. Por favor preencha corretamente");
+    }
+
+    const myUser = users.find(
+      (u: User) => u.name.toLowerCase() === name.toLowerCase()
+    );
+    if (!myUser) {
+      errorCode = 404;
+      throw new Error("Usuário não encontrado"); // b)
+    }
+
+    const result = myUser;
+    res.status(200).send(result);
+  } catch (error) {
+    res.status(errorCode).send(error.message);
+  }
+});
+
+// a) Os parâmetros foram enviados ​​por QueryParams, pois seria necessário buscar um termo específico que não é necessariamente único.
+
 app.listen(3003, () => {
   console.log("Server is running at port 3003");
 });
