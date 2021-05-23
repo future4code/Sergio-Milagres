@@ -265,6 +265,34 @@ app.patch("/user/:id", (req: Request, res: Response) => {
   }
 });
 
+// Exercício 7)
+app.delete("/user/:id", (req: Request, res: Response) => {
+  let errorCode: number = 400;
+
+  try {
+    if (!req.headers.authorization) {
+      errorCode = 401;
+      throw new Error("Usuário não autorizado!");
+    }
+
+    const userIndex: number = users.findIndex(
+      (user) => user.id === Number(req.params.id)
+    );
+
+    if (userIndex === -1) {
+      errorCode = 404;
+      throw new Error("Usuário não encontrado");
+    }
+
+    users.splice(userIndex, 1);
+
+    res.status(200).send({ message: "Usuário apagado com sucesso!" });
+  } catch (error) {
+    res.status(errorCode).send({ message: error.message });
+  }
+});
+
+// Servidor
 app.listen(3003, () => {
   console.log("Server is running at port 3003");
 });
