@@ -135,6 +135,62 @@ app.get("/user/byname/search", (req: Request, res: Response) => {
 
 // a) Os parâmetros foram enviados ​​por QueryParams, pois seria necessário buscar um termo específico que não é necessariamente único.
 
+// Exercício 4)
+app.post("/user", (req: Request, res: Response) => {
+  let errorCode: number = 400;
+
+  try {
+    const reqBody: User = {
+      id: Date.now(),
+      name: req.body.name,
+      email: req.body.email,
+      type: req.body.type,
+      age: req.body.age,
+    };
+
+    if (!reqBody.age || !reqBody.email || !reqBody.type || !reqBody.name) {
+      errorCode = 422;
+      throw new Error("Algum campo está inválido. Preencha corretamente.");
+    }
+
+    users.push(reqBody);
+
+    res.status(200).send({ message: "Usuário inserido com sucesso!" });
+  } catch (error) {
+    res.status(errorCode).send({ message: error.message });
+  }
+});
+
+// a)
+app.put("/user", (req: Request, res: Response) => {
+  let errorCode: number = 400;
+
+  try {
+    const reqBody: User = {
+      id: Date.now(),
+      name: req.body.name,
+      email: req.body.email,
+      type: req.body.type,
+      age: req.body.age,
+    };
+
+    if (!reqBody.age || !reqBody.email || !reqBody.type || !reqBody.name) {
+      errorCode = 422;
+      throw new Error("Algum campo está inválido. Preencha corretamente.");
+    }
+
+    users.push(reqBody);
+
+    res.status(200).send({ message: "Usuário inserido com sucesso!" });
+  } catch (error) {
+    res.status(errorCode).send({ message: error.message });
+  }
+});
+
+// Para esta API nada mudou, aparentemente funcionou da mesma forma.
+
+// b) A julgar por esta situação e pelo que fiz até agora, diria que sim, funciona normalmente. Porém, existem diferenças entre os métodos em termos de registro de atividade.
+
 app.listen(3003, () => {
   console.log("Server is running at port 3003");
 });
