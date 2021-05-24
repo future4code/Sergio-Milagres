@@ -51,7 +51,7 @@ let users: user[] = [
     balance: 4524.97,
     expenses: [
       { value: 179.17, date: "18/05/2021", description: "Assinatura de TV" },
-      { value: 45.90, date: "19/05/2021", description: "Netflix" },
+      { value: 45.9, date: "19/05/2021", description: "Netflix" },
     ],
   },
   {
@@ -62,7 +62,7 @@ let users: user[] = [
     balance: 3703.5,
     expenses: [
       { value: 489.47, date: "17/05/2021", description: "Americanas.com" },
-      { value: 215.90, date: "21/05/2021", description: "Shopping" },
+      { value: 215.9, date: "21/05/2021", description: "Shopping" },
     ],
   },
   {
@@ -83,11 +83,76 @@ let users: user[] = [
     birth: "06/04/1994",
     balance: 4127.68,
     expenses: [
-      { value: 139.40, date: "19/05/2021", description: "Epic Games" },
+      { value: 139.4, date: "19/05/2021", description: "Epic Games" },
       { value: 387.12, date: "22/05/2021", description: "Kabum" },
     ],
   },
 ];
+
+// Endpoint de cadastro de usuário e conta
+app.post("/user", (req: Request, res: Response) => {
+  let errorCode: number = 400;
+
+  try {
+    const yearNow: number = new Date().getFullYear();
+    const monthNow: number = new Date().getMonth() + 1;
+    const dayNow: number = new Date().getDate();
+    const birth: string = req.body.birth;
+    const birthDay: number = Number(birth.substring(0, 2));
+    const birthMonth: number = Number(birth.substring(3, 5));
+    const birthYear: number = Number(birth.substring(6, 10));
+
+    const reqBody: user = {
+      id: Date.now(),
+      name: req.body.name,
+      cpf: req.body.cpf,
+      birth: req.body.birth,
+      balance: 0,
+      expenses: [],
+    };
+
+    if (!reqBody.cpf || !reqBody.birth || !reqBody.name) {
+      errorCode = 422;
+      throw new Error("Algum campo está inválido. Preencha corretamente.");
+    }
+
+    // Validação de CPF existente
+    const myUserIndex = users.findIndex((u: user) => u.cpf === reqBody.cpf);
+
+    if (myUserIndex > -1) {
+      errorCode = 409;
+      throw new Error("Número de CPF já existente!");
+    }
+
+    // Validação de idade mínima de 18 anos
+    if (yearNow - birthYear < 18) {
+      errorCode = 401;
+      throw new Error("Idade insuficiente para abertura de conta!");
+    } else {
+      if (yearNow - birthYear === 18) {
+        if (monthNow < birthMonth) {
+          errorCode = 401;
+          throw new Error("Idade insuficiente para abertura de conta!");
+        } else {
+          if (monthNow === birthMonth) {
+            if (dayNow < birthDay) {
+              errorCode = 401;
+              throw new Error("Idade insuficiente para abertura de conta!");
+            }
+          }
+        }
+      }
+    }
+
+    users.push(reqBody);
+
+    res
+      .status(200)
+      .send({ message: "Conta Criada com sucesso! Bem vindo ao F4Bank!" });
+  } catch (error) {
+    res.status(errorCode).send({ message: error.message });
+  }
+});
 
 // Servidor
 app.listen(3003, () => {
