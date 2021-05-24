@@ -183,6 +183,52 @@ app.get("/user/:cpf", (req: Request, res: Response) => {
   }
 });
 
+// Endpoint para Adicionar saldo 
+app.put("/user", (req: Request, res: Response) => {
+  let errorCode: number = 400;
+
+  try {
+    const reqBody: { name: string; cpf: string; balance: number } = {
+      name: req.body.name,
+      cpf: req.body.cpf,
+      balance: Number(req.body.balance),
+    };
+
+    if (!reqBody.name) {
+      errorCode = 422;
+      throw new Error("Nome inválido. Preencha corretamente.");
+    }
+
+    if (!reqBody.cpf) {
+      errorCode = 422;
+      throw new Error("CPF inválido");
+    }
+
+    if (isNaN(Number(reqBody.balance))) {
+      errorCode = 422;
+      throw new Error("Valor inválido");
+    }
+
+    const myUserIndex = users.findIndex((u: user) => u.cpf === reqBody.cpf);
+
+    if (myUserIndex === -1) {
+      errorCode = 404;
+      throw new Error("Usuário não encontrado");
+    }
+
+    if (users[myUserIndex].name !== reqBody.name) {
+      errorCode = 404;
+      throw new Error("Dados Divergentes! Verifique o nome ou CPF informados.");
+    }
+
+    users[myUserIndex].balance += reqBody.balance;
+
+    res.status(200).send({ message: "Saldo Adicionado com sucesso!" });
+  } catch (error) {
+    res.status(errorCode).send({ message: error.message });
+  }
+});
+
 // Servidor
 app.listen(3003, () => {
   console.log("Servidor rodando na porta 3003");
