@@ -148,7 +148,7 @@ app.post("/user", (req: Request, res: Response) => {
 
     res
       .status(200)
-      .send({ message: "Conta Criada com sucesso! Bem vindo ao F4Bank!" });
+      .send({ message: "Conta Criada com sucesso! Bem vindo ao LabeBank!" });
   } catch (error) {
     res.status(errorCode).send({ message: error.message });
   }
@@ -183,7 +183,7 @@ app.get("/user/:cpf", (req: Request, res: Response) => {
   }
 });
 
-// Endpoint para Adicionar saldo 
+// Endpoint para Adicionar saldo
 app.put("/user", (req: Request, res: Response) => {
   let errorCode: number = 400;
 
@@ -227,6 +227,17 @@ app.put("/user", (req: Request, res: Response) => {
   } catch (error) {
     res.status(errorCode).send({ message: error.message });
   }
+});
+
+// Endpoint pegar todos os usuários existentes no array de usuários
+app.get("/user", (req: Request, res: Response) => {
+  const result = users.map((user) => ({
+    id: user.id,
+    name: user.name,
+    cpf: user.cpf,
+  }));
+
+  res.status(200).send(result);
 });
 
 // Servidor
