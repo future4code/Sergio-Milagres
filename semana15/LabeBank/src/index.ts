@@ -89,6 +89,46 @@ let users: user[] = [
   },
 ];
 
+// Endpoint pegar todos os usuários existentes no array de usuários
+app.get("/user", (req: Request, res: Response) => {
+  const result = users.map((user) => ({
+    id: user.id,
+    name: user.name,
+    cpf: user.cpf,
+  }));
+
+  res.status(200).send(result);
+});
+
+// Endpoint para Pegar Saldo
+app.get("/user/:cpf", (req: Request, res: Response) => {
+  let errorCode: number = 400;
+
+  try {
+    if (!req.params.cpf) {
+      errorCode = 422;
+      throw new Error("CPF inválido. Preencha corretamente.");
+    }
+
+    const myUser = users.find((u: user) => u.cpf === req.params.cpf);
+    if (!myUser) {
+      errorCode = 404;
+      throw new Error("Usuário não encontrado");
+    }
+
+    const result = {
+      id: myUser.id,
+      name: myUser.name,
+      cpf: myUser.cpf,
+      Saldo: myUser.balance,
+    };
+
+    res.status(200).send(result);
+  } catch (error) {
+    res.status(errorCode).send({ message: error.message });
+  }
+});
+
 // Endpoint de cadastro de usuário e conta
 app.post("/user", (req: Request, res: Response) => {
   let errorCode: number = 400;
@@ -154,35 +194,6 @@ app.post("/user", (req: Request, res: Response) => {
   }
 });
 
-// Endpoint para Pegar Saldo
-app.get("/user/:cpf", (req: Request, res: Response) => {
-  let errorCode: number = 400;
-
-  try {
-    if (!req.params.cpf) {
-      errorCode = 422;
-      throw new Error("CPF inválido. Preencha corretamente.");
-    }
-
-    const myUser = users.find((u: user) => u.cpf === req.params.cpf);
-    if (!myUser) {
-      errorCode = 404;
-      throw new Error("Usuário não encontrado");
-    }
-
-    const result = {
-      id: myUser.id,
-      name: myUser.name,
-      cpf: myUser.cpf,
-      Saldo: myUser.balance,
-    };
-
-    res.status(200).send(result);
-  } catch (error) {
-    res.status(errorCode).send({ message: error.message });
-  }
-});
-
 // Endpoint para Adicionar saldo
 app.put("/user", (req: Request, res: Response) => {
   let errorCode: number = 400;
@@ -227,17 +238,6 @@ app.put("/user", (req: Request, res: Response) => {
   } catch (error) {
     res.status(errorCode).send({ message: error.message });
   }
-});
-
-// Endpoint pegar todos os usuários existentes no array de usuários
-app.get("/user", (req: Request, res: Response) => {
-  const result = users.map((user) => ({
-    id: user.id,
-    name: user.name,
-    cpf: user.cpf,
-  }));
-
-  res.status(200).send(result);
 });
 
 // Servidor
