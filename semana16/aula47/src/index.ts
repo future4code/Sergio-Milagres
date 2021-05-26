@@ -133,6 +133,47 @@ app.delete("/actor/:id", async (req: Request, res: Response) => {
   }
 });
 
+// Exercicio 5
+
+const createMovie = async (
+  id: string,
+  name: string,
+  synopsis: string,
+  release_date: Date,
+  rating: number,
+  playing_limit_date: Date
+): Promise<void> => {
+  await connection
+    .insert({
+      id: id,
+      name: name,
+      synopsis: synopsis,
+      release_date: release_date,
+      rating: rating,
+      playing_limit_date: playing_limit_date,
+    })
+    .into("Movies");
+};
+
+app.post("/movie", async (req: Request, res: Response) => {
+  try {
+    await createMovie(
+      req.body.id,
+      req.body.name,
+      req.body.synopsis,
+      new Date(req.body.release_date),
+      req.body.rating,
+      new Date(req.body.playing_limit_date)
+    );
+
+    res.status(200).send("Filme criado com sucesso!");
+  } catch (err) {
+    res.status(400).send({
+      message: err.message,
+    });
+  }
+});
+
 // Servidor
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
