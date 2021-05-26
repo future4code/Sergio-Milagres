@@ -129,3 +129,32 @@ O erro aponta um nome de coluna desconhecido. O nome do campo é "name" e não "
 ```sql
     SELECT id, name from Actor WHERE id = "002";
 ```
+
+### Exercício 4
+
+a) A query abaixo seleciona todos os elementos da tabela "Actor" onde o valor do campo "salary é maior que 30000 e o valor do campo "name" começa com "A" ou "J".
+
+```sql
+    SELECT * FROM Actor
+    WHERE (name LIKE "A%" OR name LIKE "J%") AND salary > 30000
+```
+
+b)
+
+```sql
+    SELECT * from Actor WHERE (name NOT LIKE "A%") AND salary > 350000;
+```
+
+C)
+
+```sql
+    SELECT * FROM Actor
+    WHERE (name LIKE "%G%" OR name LIKE "%g%");
+```
+
+d)
+
+```sql
+    SELECT * FROM Actor
+    WHERE (name LIKE "%A%" OR name LIKE "%a%" OR name LIKE "%G%" OR name LIKE "%g%") AND salary BETWEEN 350000 AND 900000;
+```
