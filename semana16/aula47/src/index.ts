@@ -42,6 +42,31 @@ const countActors = async (gender: string): Promise<any> => {
   return count;
 };
 
+// Exercício 2
+
+// a)
+const updateActor = async (id: string, salary: number): Promise<any> => {
+  await connection("Actor")
+    .update({
+      salary: salary,
+    })
+    .where("id", id);
+};
+
+// b)
+const deleteActor = async (id: string): Promise<any> => {
+  await connection("Actor").delete().where("id", id);
+};
+
+// c)
+const avgSalary = async (gender: string): Promise<any> => {
+  const result = await connection("Actor")
+    .avg("salary as average")
+    .where("gender", gender);
+
+  return result[0].average;
+};
+
 // Servidor
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
