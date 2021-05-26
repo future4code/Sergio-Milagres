@@ -174,6 +174,27 @@ app.post("/movie", async (req: Request, res: Response) => {
   }
 });
 
+// Exercício 6
+
+const getAllMovies = async (): Promise<any> => {
+  const result = await connection.raw(`
+      SELECT * FROM Movies LIMIT 15
+    `);
+  return result;
+};
+
+app.get("/movie/all", async (req: Request, res: Response) => {
+  try {
+    const result = await getAllMovies();
+
+    res.status(200).send(result[0]);
+  } catch (err) {
+    res.status(400).send({
+      message: err.message,
+    });
+  }
+});
+
 // Servidor
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
