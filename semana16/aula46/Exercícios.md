@@ -111,3 +111,42 @@ d)
 ```sql
     SELECT SUM(salary) FROM Actor;
 ```
+
+### Exercício 5
+
+a) A query abaixo retorna a contagem agrupada pelo campo "gender" de todos os atores exibindo ao lado o genêro de cada resultado.
+
+```sql
+    SELECT COUNT(*), gender
+    FROM Actor
+    GROUP BY gender
+```
+
+b)
+
+```sql
+    SELECT id, name FROM Actor
+    ORDER BY name DESC;
+```
+
+c)
+
+```sql
+    SELECT * FROM Actor
+    ORDER BY salary;
+```
+
+d)
+
+```sql
+    SELECT * FROM Actor
+    ORDER BY salary DESC LIMIT 3;
+```
+
+e)
+
+```sql
+    SELECT AVG(salary) AS 'Média de Salários', gender AS 'Gênero'
+    FROM Actor
+    GROUP BY gender;
+```
