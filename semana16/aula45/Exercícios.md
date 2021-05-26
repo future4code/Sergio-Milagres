@@ -158,3 +158,69 @@ d)
     SELECT * FROM Actor
     WHERE (name LIKE "%A%" OR name LIKE "%a%" OR name LIKE "%G%" OR name LIKE "%g%") AND salary BETWEEN 350000 AND 900000;
 ```
+
+### Exercício 5
+
+a) A query abaixo cria uma tabela chamada Movies com os campos: id (PK do tipo string), name (tipo string), synopsis (do tipo Text, similar ao string porém sem definição de tamanho), release-date (tipo Date) e rating (do tipo Inteiro). Todos os campos foram definidos como obrigatórios, não podendo conter valores null. E o campo "name" foi definido como UNIQUE, dessa forma, os elementos não podem ter valores iguais neste campo.
+
+```sql
+    CREATE TABLE Movies (
+    id VARCHAR(255) PRIMARY KEY,
+    name VARCHAR (255) NOT NULL UNIQUE,
+    synopsis TEXT NOT NULL,
+    release_date DATE NOT NULL,
+	rating INT NOT NULL
+);
+```
+
+b)
+
+```sql
+    INSERT INTO Movies (id, name, synopsis, release_date, rating)
+    VALUES (
+    "001",
+    "Se Eu Fosse Você",
+    "Cláudio e Helena são casados há muitos anos e enfrentam a rotina do casamento. Um dia eles são atingidos por um fenômeno inexplicável e trocam de corpos",
+    "2006-01-06",
+    7
+);
+```
+
+c)
+
+```sql
+    INSERT INTO Movies (id, name, synopsis, release_date, rating)
+    VALUES (
+    "002",
+    "Doce de mãe",
+    "Dona Picucha, uma animada senhora de 85 anos, sempre causa grandes confusões. A vida dela e dos seus quatro filhos sofre uma reviravolta depois que Zaida, empregada e amiga de Dona Picucha, anuncia que vai se casar e não poderá mais morar com ela",
+    "2012-12-27",
+    10
+);
+```
+
+d)
+
+```sql
+    INSERT INTO Movies (id, name, synopsis, release_date, rating)
+    VALUES (
+    "003",
+    "Dona Flor e Seus Dois Maridos",
+    "Dona Flor é uma sedutora professora de culinária casada com Vadinho, que só quer saber de farras e jogatina nas boates. A vida de abusos acaba por acarretar sua morte precoce.",
+    "2017-11-02",
+    8
+);
+```
+
+e)
+
+```sql
+    INSERT INTO Movies (id, name, synopsis, release_date, rating)
+    VALUES (
+    "004",
+    "Minha Mãe é uma Peça 3: O Filme",
+    "Dona Hermínia precisa se redescobrir e se reinventar porque seus filhos estão formando novas famílias. Marcelina está grávida e Juliano vai casar. Dona Hermínia está mais ansiosa do que nunca. Para completar as confusões, Carlos Alberto, seu ex-marido, que esteve sempre por perto, agora resolve se mudar para o apartamento ao lado.",
+    "2019-12-26",
+    7
+);
+```
