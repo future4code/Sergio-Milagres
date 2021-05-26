@@ -68,3 +68,18 @@ Apesar de não ter sido acusado um erro, este comando não realizou nenhuma alte
     SET name = "Marina Ruy Barbosa"
     WHERE id = "015";
 ```
+
+### Exercício 3
+
+a) No exercício 2, item a, foram alterados o nome e a data de nascimento da Fernanda Montenegro pelos da filha dela. Portanto, será apagado com o nome Fernanda Torres (não deixa de ser "Fernanda", rs)
+
+```sql
+    DELETE FROM Actor WHERE name = "Fernanda Torres";
+```
+
+b)
+
+```sql
+    DELETE FROM Actor
+    WHERE gender = "male" AND salary > 1000000;
+```
