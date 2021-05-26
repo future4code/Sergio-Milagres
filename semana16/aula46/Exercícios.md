@@ -186,3 +186,44 @@ Ocorreu o mesmo que no item d, do exercicio 2. Uma tentativa de alterar um eleme
     SET synopsis = "Ótima comédia"
     WHERE id = "004";
 ```
+
+### Exercício 7
+
+a)
+
+```sql
+    SELECT COUNT(*) FROM Movies
+    WHERE playing_limit_date > CURDATE() AND rating > 7.5;
+```
+
+b)
+
+```sql
+    SELECT AVG(rating) FROM Movies;
+```
+
+c)
+
+```sql
+    SELECT COUNT(*) FROM Movies
+    WHERE playing_limit_date > CURDATE();
+```
+
+d)
+
+```sql
+    SELECT COUNT(*) FROM Movies
+    WHERE release_date > CURDATE();
+```
+
+e)
+
+```sql
+    SELECT MAX(rating) FROM Movies;
+```
+
+f)
+
+```sql
+    SELECT MIN(rating) FROM Movies;
+```
