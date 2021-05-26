@@ -150,3 +150,39 @@ e)
     FROM Actor
     GROUP BY gender;
 ```
+
+### Exercício 6
+
+a)
+
+```sql
+    ALTER TABLE Movies ADD COLUMN playing_limit_date DATE;
+```
+
+b)
+
+```sql
+    ALTER TABLE Movies CHANGE rating rating FLOAT;
+```
+
+c)
+
+```sql
+    UPDATE Movies
+    SET playing_limit_date = "2021-06-16"
+    WHERE id = "004";
+    UPDATE Movies
+    SET playing_limit_date = "2006-02-02"
+    WHERE id = "001";
+```
+
+d) 0 row(s) affected Rows matched: 0 Changed: 0 Warnings: 0
+Ocorreu o mesmo que no item d, do exercicio 2. Uma tentativa de alterar um elemento não existente. Apensar de não acusar nenhum erro, nenhuma alteração é feita na tabela.
+
+```sql
+    DELETE FROM Movies
+    WHERE id = "004";
+    UPDATE Movies
+    SET synopsis = "Ótima comédia"
+    WHERE id = "004";
+```
