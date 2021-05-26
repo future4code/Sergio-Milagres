@@ -224,3 +224,23 @@ e)
     7
 );
 ```
+
+### Exercício 6
+
+a)
+
+```sql
+    SELECT id, name, rating from Movies WHERE id = "003";
+```
+
+b)
+
+```sql
+    SELECT * from Movies WHERE name = "Doce de mãe";
+```
+
+c)
+
+```sql
+    SELECT id, name, synopsis from Movies WHERE rating > 7;
+```
