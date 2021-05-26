@@ -21,6 +21,27 @@ const app: Express = express();
 app.use(express.json());
 app.use(cors());
 
+// Exercício 1
+
+/* a) Ao usar o raw, a resposta do banco inclui informações extras além das contidas nas linhas da tabela. Essas informações são enviadas em um segundo array, tornando a resposta em um grande array composto de dois outros arrays. No primeiro array filho estão as informações dos elementos (os que queremos) e no segundo array filho, as informações complementares que, neste caso, podemos ignorar. */
+
+// b)
+const searchActor = async (name: string): Promise<any> => {
+  const result = await connection.raw(`
+      SELECT * FROM Actor WHERE name = "${name}"
+    `);
+  return result;
+};
+
+// c)
+const countActors = async (gender: string): Promise<any> => {
+  const result = await connection.raw(`
+      SELECT COUNT(*) as count FROM Actor WHERE gender = "${gender}"
+    `);
+  const count = result.count;
+  return count;
+};
+
 // Servidor
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
