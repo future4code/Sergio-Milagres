@@ -195,6 +195,29 @@ app.get("/movie/all", async (req: Request, res: Response) => {
   }
 });
 
+// Exercício 7
+
+const searchMovie = async (word: string): Promise<any> => {
+  const result = await connection.raw(`
+      SELECT * FROM Movies WHERE name LIKE "%${word}%" OR synopsis LIKE "%${word}%"
+      ORDER BY release_date ASC 
+    `);
+  return result;
+};
+
+app.get("/movie/search", async (req: Request, res: Response) => {
+  try {
+    const word: string = req.query.word as string;
+    const result = await searchMovie(word);
+
+    res.status(200).send(result[0]);
+  } catch (err) {
+    res.status(400).send({
+      message: err.message,
+    });
+  }
+});
+
 // Servidor
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
