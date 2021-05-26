@@ -227,3 +227,34 @@ f)
 ```sql
     SELECT MIN(rating) FROM Movies;
 ```
+
+### Exercício 8
+
+a)
+
+```sql
+    SELECT * FROM Movies
+    ORDER BY name ASC;
+```
+
+b)
+
+```sql
+    SELECT * FROM Movies
+    ORDER BY name DESC LIMIT 5;
+```
+
+c)
+
+```sql
+    SELECT * FROM Movies
+    WHERE release_date < CURDATE()
+    ORDER BY release_date DESC LIMIT 3;
+```
+
+d)
+
+```sql
+    SELECT * FROM Movies
+    ORDER BY rating DESC LIMIT 3;
+```
