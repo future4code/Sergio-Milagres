@@ -104,6 +104,35 @@ app.get("/actor/search", async (req: Request, res: Response) => {
   }
 });
 
+// Exercício 4
+
+// a)
+app.post("/actor", async (req: Request, res: Response) => {
+  try {
+    await updateActor(req.body.id, req.body.salary);
+
+    res.status(200).send("Informações Atualizadas");
+  } catch (err) {
+    res.status(400).send({
+      message: err.message,
+    });
+  }
+});
+
+// b)
+app.delete("/actor/:id", async (req: Request, res: Response) => {
+  try {
+    const id = req.params.id;
+    const actor = await deleteActor(id);
+
+    res.status(200).send("Artista apagado!");
+  } catch (err) {
+    res.status(400).send({
+      message: err.message,
+    });
+  }
+});
+
 // Servidor
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
