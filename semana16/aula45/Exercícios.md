@@ -244,3 +244,31 @@ c)
 ```sql
     SELECT id, name, synopsis from Movies WHERE rating > 7;
 ```
+
+### Exercício 7
+
+a)
+
+```sql
+    SELECT * from Movies WHERE name = "%vida%";
+```
+
+b)
+
+```sql
+    SELECT * FROM Movies
+    WHERE (name LIKE "%filhos%" OR synopsis LIKE "%filhos%");
+```
+
+c)
+
+```sql
+    SELECT * from Movies WHERE release_date < CURDATE();
+```
+
+d)
+
+```sql
+    SELECT * FROM Movies
+    WHERE (name LIKE "%Dona%" OR synopsis LIKE "%Dona%") AND release_date < CURDATE() AND rating > 7
+```
