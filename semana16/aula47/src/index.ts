@@ -67,6 +67,43 @@ const avgSalary = async (gender: string): Promise<any> => {
   return result[0].average;
 };
 
+// Exercício 3
+
+// a)
+const getActorById = async (id: string): Promise<any> => {
+  const result = await connection.raw(`
+      SELECT * FROM Actor WHERE id = "${id}"
+    `);
+  return result[0];
+};
+
+app.get("/actor/:id", async (req: Request, res: Response) => {
+  try {
+    const id = req.params.id;
+    const actor = await getActorById(id);
+
+    res.status(200).send(actor);
+  } catch (err) {
+    res.status(400).send({
+      message: err.message,
+    });
+  }
+});
+
+// b)
+app.get("/actor/search", async (req: Request, res: Response) => {
+  try {
+    const gender: string = req.query.gender as string;
+    const totalGender = await countActors(gender);
+
+    res.status(200).send(totalGender[0]);
+  } catch (err) {
+    res.status(400).send({
+      message: err.message,
+    });
+  }
+});
+
 // Servidor
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
