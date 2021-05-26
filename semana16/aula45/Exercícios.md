@@ -96,3 +96,36 @@ f)
     "female"
     );
 ```
+
+### Exercício 3
+
+a)
+
+```sql
+    SELECT * from Actor WHERE gender = "female";
+```
+
+b)
+
+```sql
+    SELECT salary from Actor WHERE name = "Tony Ramos";
+```
+
+c) A query abaixo não retornou nenhuma informação, pois não existe nenhum elemento com o campo gender com este valor.
+
+```sql
+    SELECT * from Actor WHERE gender = "invalid";
+```
+
+d)
+
+```sql
+    SELECT id, name, salary from Actor WHERE salary <= 500000;
+```
+
+e) Error Code: 1054. Unknown column 'nome' in 'field list'
+O erro aponta um nome de coluna desconhecido. O nome do campo é "name" e não "nome" como informado.
+
+```sql
+    SELECT id, name from Actor WHERE id = "002";
+```
