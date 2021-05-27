@@ -12,7 +12,7 @@ b)
     comment TEXT NOT NULL,
 	rate FLOAT NOT NULL,
     movie_id VARCHAR(255),
-    FOREIGN KEY (movie_id) REFERENCES Movies(id)
+    FOREIGN KEY (movie_id) REFERENCES Movie(id)
     );
 
     INSERT INTO Rating (comment, rate, movie_id)
@@ -25,20 +25,20 @@ b)
 
 c)
 
-Error Code: 1452. Cannot add or update a child row: a foreign key constraint fails (`cruz-2114912-sergio-milagres`.`Rating`, CONSTRAINT `Rating_ibfk_1` FOREIGN KEY (`movie_id`) REFERENCES `Movies` (`id`))
+Error Code: 1452. Cannot add or update a child row: a foreign key constraint fails (`cruz-2114912-sergio-milagres`.`Rating`, CONSTRAINT `Rating_ibfk_1` FOREIGN KEY (`movie_id`) REFERENCES `Movie` (`id`))
 
 Ele diz que não é possível adicionar ou atualizar a linha porque uma condição da chave estrangeira falhou. No caso, o conteúdo do campo definido como chave estrangeira, precisa existir na tabela de referência.
 
 d)
 
 ```sql
-    ALTER TABLE Movies
+    ALTER TABLE Movie
     DROP COLUMN rating;
 ```
 
 e)
 
-Error Code: 1451. Cannot delete or update a parent row: a foreign key constraint fails (`cruz-2114912-sergio-milagres`.`Rating`, CONSTRAINT `Rating_ibfk_1` FOREIGN KEY (`movie_id`) REFERENCES `Movies` (`id`))
+Error Code: 1451. Cannot delete or update a parent row: a foreign key constraint fails (`cruz-2114912-sergio-milagres`.`Rating`, CONSTRAINT `Rating_ibfk_1` FOREIGN KEY (`movie_id`) REFERENCES `Movie` (`id`))
 
 Ele diz que não é possível deletar ou atualizar a linha porque uma condição da chave estrangeira falhou. Neste caso, a linha em questão está relacionado à uma informação em uma outra tabela onde a chave estrangeira aponta para a PK deta linha.
 
@@ -85,5 +85,29 @@ b)
 
 ```sql
     SELECT name, Movie.id, rate FROM Movie
-    INNER JOIN Rating ON Movie.id = Rating.movie_id
+    INNER JOIN Rating ON Movie.id = Rating.movie_id;
+```
+
+### Exercicio 4
+
+a)
+
+```sql
+    SELECT name, Movie.id, rate, comment FROM Movie
+    LEFT JOIN Rating ON Movie.id = Rating.movie_id;
+```
+
+b)
+
+```sql
+    SELECT Movie.id, Movie.name, MovieCast.actor_id FROM Movie
+    RIGHT JOIN MovieCast ON MovieCast.movie_id = Movie.id;
+```
+
+c)
+
+```sql
+    SELECT AVG(Rating.rate) AS "Avaliação Média", Movie.id, Movie.name FROM Movie
+    LEFT JOIN Rating ON Movie.id = Rating.movie_id
+    GROUP BY (Movie.id) ORDER BY (AVG(Rating.rate)) DESC;
 ```
