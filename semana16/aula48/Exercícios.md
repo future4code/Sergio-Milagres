@@ -74,3 +74,16 @@ d)
 Error Code: 1451. Cannot delete or update a parent row: a foreign key constraint fails (`cruz-2114912-sergio-milagres`.`MovieCast`, CONSTRAINT `MovieCast_ibfk_2` FOREIGN KEY (`actor_id`) REFERENCES `Actor` (`id`))
 
 Ele diz que não é possível adicionar ou atualizar a linha porque uma condição da chave estrangeira falhou. Neste caso, a linha em questão está relacionado à uma informação em uma outra tabela onde a chave estrangeira aponta para a PK deta linha.
+
+### Exercicio 3
+
+a)
+
+O operador ON é a condição que indica quais combinações das duas tabelas serão exibidas. Caso não seja definida essa condição, serão exibidas todas as combinações possíveis para estas duas tabelas.
+
+b)
+
+```sql
+    SELECT name, Movie.id, rate FROM Movie
+    INNER JOIN Rating ON Movie.id = Rating.movie_id
+```
