@@ -41,3 +41,36 @@ e)
 Error Code: 1451. Cannot delete or update a parent row: a foreign key constraint fails (`cruz-2114912-sergio-milagres`.`Rating`, CONSTRAINT `Rating_ibfk_1` FOREIGN KEY (`movie_id`) REFERENCES `Movies` (`id`))
 
 Ele diz que não é possível deletar ou atualizar a linha porque uma condição da chave estrangeira falhou. Neste caso, a linha em questão está relacionado à uma informação em uma outra tabela onde a chave estrangeira aponta para a PK deta linha.
+
+### Exercicio 2
+
+a)
+
+Esta tabela relaciona o id de um ator ao id de um filme. Ambos os ids são PK's em suas respectivas tabelas e aqui estão definidos como FK. Cada linha desta tabela possuirá um id de ator e um id de filme correspondente, podenos ambas as informações se repetirem uma vez que não são PK e a relação entre filmes e atores é de N:M.
+
+b)
+
+Tive que atualizar alguns atores na tabela Actor
+
+```sql
+    INSERT INTO MovieCast (movie_id, actor_id)
+    VALUES
+    ("001","001"),
+    ("001","002"),
+    ("002","003"),
+    ("003","004"),
+    ("003","005"),
+    ("004","006");
+```
+
+c)
+
+Error Code: 1452. Cannot add or update a child row: a foreign key constraint fails (`cruz-2114912-sergio-milagres`.`MovieCast`, CONSTRAINT `MovieCast_ibfk_1` FOREIGN KEY (`movie_id`) REFERENCES `Movie` (`id`))
+
+Ele diz que não é possível adicionar ou atualizar a linha porque uma condição da chave estrangeira falhou. No caso, o conteúdo informado da coluna movie_id não existe na tabela de referência.
+
+d)
+
+Error Code: 1451. Cannot delete or update a parent row: a foreign key constraint fails (`cruz-2114912-sergio-milagres`.`MovieCast`, CONSTRAINT `MovieCast_ibfk_2` FOREIGN KEY (`actor_id`) REFERENCES `Actor` (`id`))
+
+Ele diz que não é possível adicionar ou atualizar a linha porque uma condição da chave estrangeira falhou. Neste caso, a linha em questão está relacionado à uma informação em uma outra tabela onde a chave estrangeira aponta para a PK deta linha.
