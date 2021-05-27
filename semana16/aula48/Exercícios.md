@@ -111,3 +111,32 @@ c)
     LEFT JOIN Rating ON Movie.id = Rating.movie_id
     GROUP BY (Movie.id) ORDER BY (AVG(Rating.rate)) DESC;
 ```
+
+### Exercicio 5
+
+a)
+
+Essa query une em um primeiro momento as tabelas Movie e MovieCast. Depois com um novo JOIN ela acrescenta a essa junção as informações da tabela Actor. Há a necessidade de um segundo JOIN, pois as tabelas Movie e Actor são independentes uma das outra, não possuindo chaves que façam a ligação diretamente entre elas. Para isso foi usada a tabela de junção MovieCast, que possue duas FK, sendo cada uma delas relacionada a uma das tabelas independentes.
+
+b)
+
+```sql
+    SELECT m.id AS "Id do Filme", m.name AS "Filme", a.id AS "Id do Ator", a.name AS "Ator" FROM Movie m
+    LEFT JOIN MovieCast mc ON m.id = mc.movie_id
+    JOIN Actor a ON a.id = mc.actor_id;
+```
+
+c)
+
+Error Code: 1054. Unknown column 'm' in 'field list'
+
+O erro acusa que não reconhece uma coluna "m". Isso acontece pq "m" está sendo usado como apelido para a tabela Movie e quando escrito na linha de campos deveria vir seguido de um "." e o nome do campo desta tabela. Porém, houve um erro de digitação e o "m" foi seguido de uma virgula no lugar do ponto. fazendo com que o SQL entendesse que aquele "m" era um campo e, assim não o reconheceu. Ao trocar "m,title" por "m.name", a query passou a funcionar.
+
+d)
+
+```sql
+    SELECT m.name AS "Filme", a.name AS "Ator", r.comment AS "Comentários", r.rate AS "Avaliação" FROM Movie m
+    LEFT JOIN Rating r on r.movie_id = m.id
+    LEFT JOIN MovieCast mc ON m.id = mc.movie_id
+    JOIN Actor a ON a.id = mc.actor_id;
+```
