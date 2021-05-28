@@ -161,10 +161,10 @@ d)
 
 ### Exercício 5
 
-a) A query abaixo cria uma tabela chamada Movies com os campos: id (PK do tipo string), name (tipo string), synopsis (do tipo Text, similar ao string porém sem definição de tamanho), release-date (tipo Date) e rating (do tipo Inteiro). Todos os campos foram definidos como obrigatórios, não podendo conter valores null. E o campo "name" foi definido como UNIQUE, dessa forma, os elementos não podem ter valores iguais neste campo.
+a) A query abaixo cria uma tabela chamada Movie com os campos: id (PK do tipo string), name (tipo string), synopsis (do tipo Text, similar ao string porém sem definição de tamanho), release-date (tipo Date) e rating (do tipo Inteiro). Todos os campos foram definidos como obrigatórios, não podendo conter valores null. E o campo "name" foi definido como UNIQUE, dessa forma, os elementos não podem ter valores iguais neste campo.
 
 ```sql
-    CREATE TABLE Movies (
+    CREATE TABLE Movie (
     id VARCHAR(255) PRIMARY KEY,
     name VARCHAR (255) NOT NULL UNIQUE,
     synopsis TEXT NOT NULL,
@@ -176,7 +176,7 @@ a) A query abaixo cria uma tabela chamada Movies com os campos: id (PK do tipo s
 b)
 
 ```sql
-    INSERT INTO Movies (id, name, synopsis, release_date, rating)
+    INSERT INTO Movie (id, name, synopsis, release_date, rating)
     VALUES (
     "001",
     "Se Eu Fosse Você",
@@ -189,7 +189,7 @@ b)
 c)
 
 ```sql
-    INSERT INTO Movies (id, name, synopsis, release_date, rating)
+    INSERT INTO Movie (id, name, synopsis, release_date, rating)
     VALUES (
     "002",
     "Doce de mãe",
@@ -202,7 +202,7 @@ c)
 d)
 
 ```sql
-    INSERT INTO Movies (id, name, synopsis, release_date, rating)
+    INSERT INTO Movie (id, name, synopsis, release_date, rating)
     VALUES (
     "003",
     "Dona Flor e Seus Dois Maridos",
@@ -215,7 +215,7 @@ d)
 e)
 
 ```sql
-    INSERT INTO Movies (id, name, synopsis, release_date, rating)
+    INSERT INTO Movie (id, name, synopsis, release_date, rating)
     VALUES (
     "004",
     "Minha Mãe é uma Peça 3: O Filme",
@@ -230,19 +230,19 @@ e)
 a)
 
 ```sql
-    SELECT id, name, rating from Movies WHERE id = "003";
+    SELECT id, name, rating from Movie WHERE id = "003";
 ```
 
 b)
 
 ```sql
-    SELECT * from Movies WHERE name = "Doce de mãe";
+    SELECT * from Movie WHERE name = "Doce de mãe";
 ```
 
 c)
 
 ```sql
-    SELECT id, name, synopsis from Movies WHERE rating > 7;
+    SELECT id, name, synopsis from Movie WHERE rating > 7;
 ```
 
 ### Exercício 7
@@ -250,25 +250,25 @@ c)
 a)
 
 ```sql
-    SELECT * from Movies WHERE name = "%vida%";
+    SELECT * from Movie WHERE name = "%vida%";
 ```
 
 b)
 
 ```sql
-    SELECT * FROM Movies
+    SELECT * FROM Movie
     WHERE (name LIKE "%filhos%" OR synopsis LIKE "%filhos%");
 ```
 
 c)
 
 ```sql
-    SELECT * from Movies WHERE release_date < CURDATE();
+    SELECT * from Movie WHERE release_date < CURDATE();
 ```
 
 d)
 
 ```sql
-    SELECT * FROM Movies
+    SELECT * FROM Movie
     WHERE (name LIKE "%Dona%" OR synopsis LIKE "%Dona%") AND release_date < CURDATE() AND rating > 7
 ```
