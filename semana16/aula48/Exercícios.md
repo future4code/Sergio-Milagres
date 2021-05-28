@@ -140,3 +140,43 @@ d)
     LEFT JOIN MovieCast mc ON m.id = mc.movie_id
     JOIN Actor a ON a.id = mc.actor_id;
 ```
+
+### Exercicio 6
+
+a)
+
+É uma relação M:N
+
+b)
+
+```sql
+    CREATE TABLE Awards (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	award VARCHAR(255) NOT NULL,
+    year VARCHAR(4) NOT NULL,
+    movie_id VARCHAR(255),
+    FOREIGN KEY (movie_id) REFERENCES Movie(id)
+);
+```
+
+C)
+
+```sql
+    INSERT INTO Awards (award, year, movie_id)
+    VALUES
+    ("Melhor trilha sonora","2007", "001"),
+    ("Melhor design de produção","2007", "001"),
+    ("Melhor filme","2013", "002"),
+    ("Melhor direção","2013", "002"),
+    ("Melhor fotografia","2018", "003"),
+    ("Melhor roteiro adaptado","2018", "003"),
+    ("Melhor roteiro original","2020", "004"),
+    ("Maquiagem e cabelo","2020", "004");
+```
+
+d)
+
+```sql
+    SELECT m.name AS "Filme", a.award AS "Oscar de", a.year AS "Ano" FROM Movie m
+    INNER JOIN Awards a ON m.id = a.movie_id;
+```
