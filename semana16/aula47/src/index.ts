@@ -152,7 +152,7 @@ const createMovie = async (
       rating: rating,
       playing_limit_date: playing_limit_date,
     })
-    .into("Movies");
+    .into("Movie");
 };
 
 app.post("/movie", async (req: Request, res: Response) => {
@@ -178,7 +178,7 @@ app.post("/movie", async (req: Request, res: Response) => {
 
 const getAllMovies = async (): Promise<any> => {
   const result = await connection.raw(`
-      SELECT * FROM Movies LIMIT 15
+      SELECT * FROM Movie LIMIT 15
     `);
   return result;
 };
@@ -199,7 +199,7 @@ app.get("/movie/all", async (req: Request, res: Response) => {
 
 const searchMovie = async (word: string): Promise<any> => {
   const result = await connection.raw(`
-      SELECT * FROM Movies WHERE name LIKE "%${word}%" OR synopsis LIKE "%${word}%"
+      SELECT * FROM Movie WHERE name LIKE "%${word}%" OR synopsis LIKE "%${word}%"
       ORDER BY release_date ASC 
     `);
   return result;
