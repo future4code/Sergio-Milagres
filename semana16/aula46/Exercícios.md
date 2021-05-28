@@ -40,11 +40,11 @@ b)
 
 ```sql
 UPDATE Actor
-SET name = "JULIANA PÃES"
+SET name = "JULIANA PAES"
 WHERE name = "Juliana Paes";
 UPDATE Actor
 SET name = "Juliana Paes"
-WHERE name = "JULIANA PÃES";
+WHERE name = "JULIANA PAES";
 ```
 
 c)
@@ -156,22 +156,22 @@ e)
 a)
 
 ```sql
-    ALTER TABLE Movies ADD COLUMN playing_limit_date DATE;
+    ALTER TABLE Movie ADD COLUMN playing_limit_date DATE;
 ```
 
 b)
 
 ```sql
-    ALTER TABLE Movies CHANGE rating rating FLOAT;
+    ALTER TABLE Movie CHANGE rating rating FLOAT;
 ```
 
 c)
 
 ```sql
-    UPDATE Movies
+    UPDATE Movie
     SET playing_limit_date = "2021-06-16"
     WHERE id = "004";
-    UPDATE Movies
+    UPDATE Movie
     SET playing_limit_date = "2006-02-02"
     WHERE id = "001";
 ```
@@ -180,9 +180,9 @@ d) 0 row(s) affected Rows matched: 0 Changed: 0 Warnings: 0
 Ocorreu o mesmo que no item d, do exercicio 2. Uma tentativa de alterar um elemento não existente. Apensar de não acusar nenhum erro, nenhuma alteração é feita na tabela.
 
 ```sql
-    DELETE FROM Movies
+    DELETE FROM Movie
     WHERE id = "004";
-    UPDATE Movies
+    UPDATE Movie
     SET synopsis = "Ótima comédia"
     WHERE id = "004";
 ```
@@ -192,40 +192,40 @@ Ocorreu o mesmo que no item d, do exercicio 2. Uma tentativa de alterar um eleme
 a)
 
 ```sql
-    SELECT COUNT(*) FROM Movies
+    SELECT COUNT(*) FROM Movie
     WHERE playing_limit_date > CURDATE() AND rating > 7.5;
 ```
 
 b)
 
 ```sql
-    SELECT AVG(rating) FROM Movies;
+    SELECT AVG(rating) FROM Movie;
 ```
 
 c)
 
 ```sql
-    SELECT COUNT(*) FROM Movies
+    SELECT COUNT(*) FROM Movie
     WHERE playing_limit_date > CURDATE();
 ```
 
 d)
 
 ```sql
-    SELECT COUNT(*) FROM Movies
+    SELECT COUNT(*) FROM Movie
     WHERE release_date > CURDATE();
 ```
 
 e)
 
 ```sql
-    SELECT MAX(rating) FROM Movies;
+    SELECT MAX(rating) FROM Movie;
 ```
 
 f)
 
 ```sql
-    SELECT MIN(rating) FROM Movies;
+    SELECT MIN(rating) FROM Movie;
 ```
 
 ### Exercício 8
@@ -233,21 +233,21 @@ f)
 a)
 
 ```sql
-    SELECT * FROM Movies
+    SELECT * FROM Movie
     ORDER BY name ASC;
 ```
 
 b)
 
 ```sql
-    SELECT * FROM Movies
+    SELECT * FROM Movie
     ORDER BY name DESC LIMIT 5;
 ```
 
 c)
 
 ```sql
-    SELECT * FROM Movies
+    SELECT * FROM Movie
     WHERE release_date < CURDATE()
     ORDER BY release_date DESC LIMIT 3;
 ```
@@ -255,6 +255,6 @@ c)
 d)
 
 ```sql
-    SELECT * FROM Movies
+    SELECT * FROM Movie
     ORDER BY rating DESC LIMIT 3;
 ```
