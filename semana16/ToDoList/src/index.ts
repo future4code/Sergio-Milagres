@@ -124,6 +124,35 @@ app.get("/user/:id", async (req: Request, res: Response) => {
   }
 });
 
+// 3. Editar usuário
+app.post("/user/:id", async (req: Request, res: Response) => {
+  const id: number = Number(req.params.id);
+  const user = await getUserById(id);
+  const userData: user = {
+    name: req.body.name,
+    nickname: req.body.nickname,
+    email: req.body.email,
+  };
+  let errorCode: number = 400;
+
+  if (user[0] === undefined) {
+    errorCode = 404;
+    throw new Error("Usuário não encontrado");
+  }
+
+  if (!userData.name || !userData.nickname || !userData.email) {
+    errorCode = 422;
+    throw new Error("Verifique os dados informados e tente novamente.");
+  }
+
+  try {
+    await updateUser(id, userData.name, userData.nickname, userData.email);
+    res.status(200).send("Usuário atualizado com sucesso!");
+  } catch (error) {
+    res.status(errorCode).send({ message: error.message });
+  }
+});
+
 // Servidor
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
