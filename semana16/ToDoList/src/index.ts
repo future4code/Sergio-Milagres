@@ -87,6 +87,27 @@ const updateUser = async (
     .where("id", id);
 };
 
+// 1. Criar usuário
+app.post("/user", async (req: Request, res: Response) => {
+  const userData: user = {
+    name: req.body.name,
+    nickname: req.body.nickname,
+    email: req.body.email,
+  };
+
+  if (!userData.name || !userData.nickname || !userData.email) {
+    throw new Error("Verifique os dados informados e tente novamente.");
+  }
+
+  try {
+    await createUser(req.body.name, req.body.nickname, req.body.email);
+
+    res.status(200).send("Usuário criado com sucesso!");
+  } catch (error) {
+    res.status(422).send({ message: error.message });
+  }
+});
+
 // Servidor
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
