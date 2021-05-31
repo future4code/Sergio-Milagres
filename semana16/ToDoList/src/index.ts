@@ -153,6 +153,38 @@ app.post("/user/:id", async (req: Request, res: Response) => {
   }
 });
 
+// 4. Criar tarefa
+app.put("/task", async (req: Request, res: Response) => {
+  const taskData: task = {
+    title: req.body.title,
+    description: req.body.description,
+    limit_date: req.body.limit_date,
+    creator_user_id: Number(req.body.creator_user_id),
+  };
+
+  if (
+    !taskData.title ||
+    !taskData.description ||
+    !taskData.limit_date ||
+    !taskData.creator_user_id
+  ) {
+    throw new Error("Verifique os dados informados e tente novamente.");
+  }
+
+  try {
+    await createTask(
+      taskData.title,
+      taskData.description,
+      taskData.limit_date,
+      taskData.creator_user_id
+    );
+
+    res.status(200).send("Tarefa criada com sucesso!");
+  } catch (error) {
+    res.status(422).send({ message: error.message });
+  }
+});
+
 // Servidor
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
