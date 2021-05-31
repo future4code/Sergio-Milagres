@@ -108,6 +108,22 @@ app.post("/user", async (req: Request, res: Response) => {
   }
 });
 
+// 2. Pegar usuário pelo id
+app.get("/user/:id", async (req: Request, res: Response) => {
+  try {
+    const id = Number(req.params.id);
+    const user = await getUserById(id);
+
+    if (user[0] === undefined) {
+      throw new Error("Usuário não encontrado");
+    }
+
+    res.status(200).send(user[0]);
+  } catch (error) {
+    res.status(404).send({ message: error.message });
+  }
+});
+
 // Servidor
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
