@@ -88,6 +88,34 @@ app.get("/user/search", async (req: Request, res: Response): Promise<void> => {
   }
 });
 
+// Exercicio 3
+app.get(
+  "/user/all",
+  async function (req: Request, res: Response): Promise<void> {
+    try {
+      const { page = "1" } = req.query as searchUserInput;
+      const pageNumber: number = Number(page);
+      const resultsPerPage: number = 5;
+      const offset: number = resultsPerPage * (pageNumber - 1);
+      const users: any = await connection
+        .select("*")
+        .from("aula49_exercicio")
+        .limit(resultsPerPage)
+        .offset(offset);
+
+      if (!users.length) {
+        res.statusCode = 404;
+        throw new Error("Nenhum usuário encontrado");
+      }
+
+      res.send(users);
+    } catch (error) {
+      console.log(error);
+      res.send(error.message || error.sqlMessage);
+    }
+  }
+);
+
 // Servidor
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
