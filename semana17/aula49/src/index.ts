@@ -69,7 +69,7 @@ app.get("/user/:type", async (req: Request, res: Response): Promise<void> => {
 });
 
 // Exercicio 2
-app.get("/user/search", async (req: Request, res: Response): Promise<void> => {
+/* app.get("/user/search", async (req: Request, res: Response): Promise<void> => {
   try {
     const { orderBy = "name", orderType = "ASC" } =
       req.query as searchUserInput;
@@ -86,7 +86,7 @@ app.get("/user/search", async (req: Request, res: Response): Promise<void> => {
   } catch (error) {
     res.send(error.sqlMessage || error.message);
   }
-});
+}); */
 
 // Exercicio 3
 app.get(
@@ -115,6 +115,39 @@ app.get(
     }
   }
 );
+
+// Exercicio 4
+app.get("/user/search", async (req: Request, res: Response): Promise<void> => {
+  try {
+    const {
+      search = "%",
+      field = "name",
+      orderBy = "name",
+      orderType = "DESC",
+      page = "1",
+    } = req.query as searchUserInput;
+
+    const pageNumber: number = Number(page);
+    const resultsPerPage: number = 5;
+    const offset: number = resultsPerPage * (pageNumber - 1);
+    const users: any = await connection
+      .select("*")
+      .from("aula49_exercicio")
+      .where(`${field}`, "LIKE", `%${search}%`)
+      .orderBy(orderBy, orderType)
+      .limit(resultsPerPage)
+      .offset(offset);
+
+    if (!users.length) {
+      res.statusCode = 404;
+      throw new Error("Nenhum usuário encontrado");
+    }
+
+    res.send(users);
+  } catch (error) {
+    res.send(error.sqlMessage || error.message);
+  }
+});
 
 // Servidor
 const server = app.listen(process.env.PORT || 3003, () => {
