@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { AddressInfo } from "net";
 import createUser from "./endpoints/createUser";
+import userLogin from './endpoints/userLogin'
 
 dotenv.config();
 
@@ -23,6 +24,7 @@ app.use(express.json());
 app.use(cors());
 
 app.post("/user/signup", createUser);
+app.post("/user/login", userLogin);
 
 // Servidor
 const server = app.listen(process.env.PORT || 3003, () => {
