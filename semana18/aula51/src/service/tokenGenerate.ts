@@ -12,6 +12,11 @@ export function generateToken(input: AuthenticationData): string {
   return token;
 }
 
+export function getTokenData(token: string): AuthenticationData {
+  const payload = jwt.verify(token, process.env.JWT_KEY!);
+  return payload as AuthenticationData;
+}
+
 export type AuthenticationData = {
   id: string;
 };

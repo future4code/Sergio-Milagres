@@ -25,3 +25,9 @@ O código acima armazena nas variáveis, "userTableName" e "connection" o nome d
 #### a)
 
 O "as string" informa ao typescript que a informação que virá do ".env" virá como uma string. É uma afirmação, uma garantia que o tipo de dado enviado será uma string.
+
+### Exercicio 7
+
+#### a)
+
+A linha "as any" está informando que o resultado da função "jwt.verify() que será armazenado na variável "payload" poderá assumir qualquer tipo de dados.
