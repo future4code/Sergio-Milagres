@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import { AddressInfo } from "net";
 import createUser from "./endpoints/createUser";
 import userLogin from "./endpoints/userLogin";
+import getUserById from "./endpoints/getUserById";
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ app.use(cors());
 
 app.post("/signup", createUser);
 app.post("/login", userLogin);
+app.get("/user/profile", getUserById);
 
 // Servidor
 const server = app.listen(process.env.PORT || 3003, () => {
