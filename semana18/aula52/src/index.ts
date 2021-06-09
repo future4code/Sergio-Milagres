@@ -6,6 +6,7 @@ import { AddressInfo } from "net";
 import createUser from "./endpoints/createUser";
 import userLogin from "./endpoints/userLogin";
 import getUserById from "./endpoints/getUserById";
+import removeUserById from "./endpoints/removeUserById";
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ app.use(cors());
 app.post("/signup", createUser);
 app.post("/login", userLogin);
 app.get("/user/profile", getUserById);
+app.delete("/user/:id", removeUserById);
 
 // Servidor
 const server = app.listen(process.env.PORT || 3003, () => {
