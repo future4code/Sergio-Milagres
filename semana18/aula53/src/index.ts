@@ -2,6 +2,9 @@ import express from "express";
 import knex from "knex";
 import cors from "cors";
 import dotenv from "dotenv";
+import createUser from "./endpoints/createUser";
+import login from "./endpoints/login";
+import editUser from "./endpoints/editUser";
 import { AddressInfo } from "net";
 
 dotenv.config();
@@ -20,6 +23,10 @@ export const connection = knex({
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+app.post("/user/signup", createUser);
+app.post("/user/login", login);
+app.put("/user/edit", editUser);
 
 // Servidor
 const server = app.listen(process.env.PORT || 3003, () => {
