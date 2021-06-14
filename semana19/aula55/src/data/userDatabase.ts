@@ -30,3 +30,7 @@ export const selectAllUsers = async (): Promise<user> => {
 
   return users;
 };
+
+export const deleteUser = async (id: string) => {
+  await connection("Camadas_User").delete().where({ id });
+};

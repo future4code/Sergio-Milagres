@@ -3,6 +3,7 @@ import {
   insertUser,
   selectUserByEmail,
   selectAllUsers,
+  deleteUser,
 } from "../data/userDatabase";
 import { generateToken, getTokenData } from "../services/authenticator";
 import { generateId } from "../services/idGenerator";
@@ -92,4 +93,18 @@ export const businessGetAll = async (token: string) => {
   }
 
   return users;
+};
+
+export const businessDeleteUser = async (token: string, id: string) => {
+  const tokenData: authenticationData = getTokenData(token!);
+
+  if (!tokenData) {
+    throw new Error("Token inválido!");
+  }
+
+  if (tokenData.role !== USER_ROLES.ADMIN) {
+    throw new Error("É necessário ser ADMIN para realizar esta ação!");
+  }
+
+  await deleteUser(id);
 };
