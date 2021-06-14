@@ -7,6 +7,7 @@ import createUser from "./endpoints/createUser";
 import login from "./endpoints/login";
 import getUserByToken from "./endpoints/getUserByToken";
 import getUserById from "./endpoints/getUserById";
+import createRecipe from "./endpoints/createRecipe";
 
 dotenv.config();
 
@@ -29,6 +30,7 @@ app.post("/signup", createUser);
 app.post("/login", login);
 app.get("/user/:id", getUserById);
 app.get("/user/profile", getUserByToken);
+app.post("/recipe", createRecipe);
 
 // Servidor
 const server = app.listen(process.env.PORT || 3003, () => {
