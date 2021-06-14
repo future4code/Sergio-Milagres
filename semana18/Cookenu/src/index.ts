@@ -6,6 +6,7 @@ import { AddressInfo } from "net";
 import createUser from "./endpoints/createUser";
 import login from "./endpoints/login";
 import getUserByToken from "./endpoints/getUserByToken";
+import getUserById from "./endpoints/getUserById";
 
 dotenv.config();
 
@@ -26,6 +27,7 @@ app.use(cors());
 
 app.post("/signup", createUser);
 app.post("/login", login);
+app.get("/user/:id", getUserById);
 app.get("/user/profile", getUserByToken);
 
 // Servidor
