@@ -1,5 +1,9 @@
 import { Request, Response } from "express";
-import { businessSignup, businessLogin } from "../business/userBusiness";
+import {
+  businessSignup,
+  businessLogin,
+  businessGetAll,
+} from "../business/userBusiness";
 
 export const login = async (req: Request, res: Response): Promise<void> => {
   try {
@@ -26,6 +30,18 @@ export const signup = async (req: Request, res: Response) => {
       message: "Usuário criado!",
       token,
     });
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+};
+
+export const getAll = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { authorization } = req.headers;
+
+    const result = await businessGetAll(authorization!);
+
+    res.send(result);
   } catch (error) {
     res.status(400).send(error.message);
   }

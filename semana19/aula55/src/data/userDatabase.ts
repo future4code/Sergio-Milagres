@@ -18,3 +18,15 @@ export const selectUserByEmail = async (email: string): Promise<user> => {
 
   return result[0];
 };
+
+export const selectAllUsers = async (): Promise<user> => {
+  const users: any = [];
+
+  const result = await connection("Camadas_User").select("*");
+
+  for (let user of result) {
+    users.push(user);
+  }
+
+  return users;
+};

@@ -1,8 +1,12 @@
 import { hash, compare } from "../services/hashManager";
-import { insertUser, selectUserByEmail } from "../data/userDatabase";
-import { generateToken } from "../services/authenticator";
+import {
+  insertUser,
+  selectUserByEmail,
+  selectAllUsers,
+} from "../data/userDatabase";
+import { generateToken, getTokenData } from "../services/authenticator";
 import { generateId } from "../services/idGenerator";
-import { user, USER_ROLES } from "../types/user";
+import { user, USER_ROLES, authenticationData } from "../types/user";
 
 export const businessSignup = async (
   name: string,
@@ -72,4 +76,20 @@ export const businessLogin = async (email: string, password: string) => {
   });
 
   return token;
+};
+
+export const businessGetAll = async (token: string) => {
+  const tokenData: authenticationData = getTokenData(token!);
+
+  if (!tokenData) {
+    throw new Error("Token inválido!");
+  }
+
+  const users = await selectAllUsers();
+
+  if (!users) {
+    throw new Error("Não existem usuários no banco!");
+  }
+
+  return users;
 };
