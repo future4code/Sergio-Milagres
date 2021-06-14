@@ -12,3 +12,9 @@ export const insertUser = async (user: user) => {
     })
     .into("Camadas_User");
 };
+
+export const selectUserByEmail = async (email: string): Promise<user> => {
+  const result = await connection("Camadas_User").select("*").where({ email });
+
+  return result[0];
+};

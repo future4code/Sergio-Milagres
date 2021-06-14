@@ -1,8 +1,8 @@
-import { hash } from "../services/hashManager";
-import { insertUser } from "../data/userDatabase";
+import { hash, compare } from "../services/hashManager";
+import { insertUser, selectUserByEmail } from "../data/userDatabase";
 import { generateToken } from "../services/authenticator";
 import { generateId } from "../services/idGenerator";
-import { USER_ROLES } from "../types/user";
+import { user, USER_ROLES } from "../types/user";
 
 export const businessSignup = async (
   name: string,
@@ -43,6 +43,32 @@ export const businessSignup = async (
   const token: string = generateToken({
     id,
     role: role,
+  });
+
+  return token;
+};
+
+export const businessLogin = async (email: string, password: string) => {
+  if (!email || !password) {
+    throw new Error("'email' e 'senha' são obrigatórios");
+  }
+
+  const user: user = await selectUserByEmail(email);
+  console.log(user);
+
+  if (!user) {
+    throw new Error("Usuário não encontrado ou senha incorreta");
+  }
+
+  const passwordIsCorrect: boolean = await compare(password, user.password);
+
+  if (!passwordIsCorrect) {
+    throw new Error("Senha incorreta!");
+  }
+
+  const token: string = generateToken({
+    id: user.id,
+    role: user.role,
   });
 
   return token;
