@@ -61,4 +61,33 @@ describe("test attacks", () => {
       expect(validatorMock).toHaveReturnedTimes(1);
     }
   });
+
+  // Exercício 6
+
+  test("should kill a defender", () => {
+    const validatorMock = jest.fn(() => {
+      return true;
+    });
+
+    const attacker: Character = {
+      name: "Atacante",
+      health: 800,
+      defense: 300,
+      attack: 600,
+    };
+
+    const defender: Character = {
+      name: "Defensor",
+      health: 300,
+      defense: 200,
+      attack: 400,
+    };
+
+    performAttackWithInversion(attacker, defender, validatorMock as any);
+
+    expect(defender.health).toBeLessThanOrEqual(0);
+    expect(validatorMock).toHaveBeenCalled();
+    expect(validatorMock).toBeCalledTimes(2);
+    expect(validatorMock).toHaveReturnedTimes(2);
+  });
 });
