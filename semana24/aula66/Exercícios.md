@@ -114,3 +114,27 @@ function mod(a: number, b: number): number {
 ```
 
 Complexidade é O(1) pois não possui loop dependente de entrada.
+
+### Exercício 8
+
+```typescript
+function copyArray(array: number[]): number[] {
+  let copy: number[] = [];
+  for (const value of array) {
+    copy = appendToNew(copy, value);
+  }
+  return copy;
+}
+
+function appendToNew(array: number[], value: number) {
+  const newArray = [];
+  for (let i = 0; i < array.length; i++) {
+    newArray.push(array[i]);
+  }
+  newArray.push(value);
+  return newArray;
+}
+```
+
+Complexidade da função copyArray() é O(n²) pois ela possui um loop que depende da entrada "array" e dentro deste loop ela executa a função appendToNew() que também executa um loop que depende de uma entrada.
+Já esta segunda função, appendToNew(), possui complexidade O(n), por possuir um loop dependente de entrada.
