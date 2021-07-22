@@ -1,0 +1,11 @@
+{
+  "name": "aula68",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "linkedList": "tsc && node ./build/LinkedList.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
