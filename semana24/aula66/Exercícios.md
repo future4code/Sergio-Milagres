@@ -86,3 +86,17 @@ Em ordem de Eficiência:
 2. Algorítmo 1 - O(n)
 3. Algorítmo 2 - O(n)
 4. Algorítmo 4 - O(n²)
+
+### Exercício 6
+
+```typescript
+function product(a: number, b: number): number {
+  let sum = 0;
+  for (let i = 0; i < b; i++) {
+    sum += a;
+  }
+  return sum;
+}
+```
+
+Complexidade é O(n) ou mais precisamente O(b) pois possui apenas um loop dependente do valor de "b" com incremento linear.
