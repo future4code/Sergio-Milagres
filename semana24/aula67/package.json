@@ -1,0 +1,17 @@
+{
+  "name": "aula67",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "exercicio1a": "tsc && node ./build/recursive/exercicio1a.js",
+    "exercicio1b": "tsc && node ./build/recursive/exercicio1b.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^16.4.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.3.5"
+  }
+}
