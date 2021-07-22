@@ -77,3 +77,12 @@ function verifyIfExistRepeatedNumbers(listOfNumbers: number[]): boolean {
 ```
 
 Complexidade é O(n²) pois a função indexOf() recebe os elemnetos do array como argumento o que indica que ela irá realizar iterações em um array. Sendo assim, ela funciona como uma estrutura de laço e por estar dentro de outra estrutura de laço, define a complexidade como O(n²).
+
+### Exercício 5
+
+Em ordem de Eficiência:
+
+1. Algorítmo 3 - O(1)
+2. Algorítmo 1 - O(n)
+3. Algorítmo 2 - O(n)
+4. Algorítmo 4 - O(n²)
