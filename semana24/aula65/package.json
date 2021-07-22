@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "oneEdit": "tsc && node ./build/oneEdit.js"
+    "oneEdit": "tsc && node ./build/oneEdit.js",
+    "compression": "tsc && node ./build/stringCompression.js"
   },
   "author": "",
   "license": "ISC",
