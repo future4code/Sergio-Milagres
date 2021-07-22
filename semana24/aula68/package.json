@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "linkedList": "tsc && node ./build/LinkedList.js"
+    "linkedList": "tsc && node ./build/LinkedList.js",
+    "stack": "tsc && node ./build/Stack.js"
   },
   "author": "",
   "license": "ISC"
