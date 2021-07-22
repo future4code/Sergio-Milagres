@@ -100,3 +100,17 @@ function product(a: number, b: number): number {
 ```
 
 Complexidade é O(n) ou mais precisamente O(b) pois possui apenas um loop dependente do valor de "b" com incremento linear.
+
+### Exercício 7
+
+```typescript
+function mod(a: number, b: number): number {
+  if (b <= a) {
+    return -1;
+  }
+  let div = a / b;
+  return a - div * b;
+}
+```
+
+Complexidade é O(1) pois não possui loop dependente de entrada.
