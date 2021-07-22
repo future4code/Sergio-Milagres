@@ -6,7 +6,8 @@
   "scripts": {
     "exercicio1a": "tsc && node ./build/recursive/exercicio1a.js",
     "exercicio1b": "tsc && node ./build/recursive/exercicio1b.js",
-    "exercicio2": "tsc && node ./build/recursive/exercicio2.js"
+    "exercicio2": "tsc && node ./build/recursive/exercicio2.js",
+    "exercicio3": "tsc && node ./build/iteractive/exercicio3.js"
   },
   "author": "",
   "license": "ISC",
