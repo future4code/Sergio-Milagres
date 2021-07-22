@@ -62,3 +62,18 @@ export const replaceMatrixValue = (
 ```
 
 Complexidade é O(1) pois não possui loop dependente de entrada.
+
+### Exercício 4
+
+```typescript
+function verifyIfExistRepeatedNumbers(listOfNumbers: number[]): boolean {
+  for (let i = 0; i < listOfNumbers.length; i++) {
+    if (listOfNumbers.indexOf(listOfNumbers[i]) !== i) {
+      return true;
+    }
+  }
+  return false;
+}
+```
+
+Complexidade é O(n²) pois a função indexOf() recebe os elemnetos do array como argumento o que indica que ela irá realizar iterações em um array. Sendo assim, ela funciona como uma estrutura de laço e por estar dentro de outra estrutura de laço, define a complexidade como O(n²).
