@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "linkedList": "tsc && node ./build/LinkedList.js",
-    "stack": "tsc && node ./build/Stack.js"
+    "stack": "tsc && node ./build/Stack.js",
+    "queue": "tsc && node ./build/Queue.js"
   },
   "author": "",
   "license": "ISC"
